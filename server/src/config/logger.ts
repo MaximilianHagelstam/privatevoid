@@ -15,7 +15,7 @@ const logger = createLogger({
     format.errors({ stack: true }),
     logFormat
   ),
-  transports: [new transports.Console()]
+  transports: [new transports.Console()],
 });
 
 export default logger;
