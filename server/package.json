@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development nodemon src/server.ts",
     "build": "rm -rf dist&&tsc",
     "test": "cross-env NODE_ENV=test jest --forceExit --coverage --verbose",
-    "run-db": "sudo service postgresql status"
+    "start-db": "sudo service postgresql start"
   },
   "repository": {
     "type": "git",
