@@ -13,7 +13,7 @@ db.authenticate()
     logger.info("Connected to DB");
   })
   .catch((err) => {
-    logger.error(`Error connecting to db: ${err}`);
+    logger.error(`Error connecting to DB: ${err}`);
   });
 
 const app = express();
