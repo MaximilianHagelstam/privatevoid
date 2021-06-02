@@ -1,3 +1,3 @@
 # PrivateVoid
 
-A place where developers share and connect
+A place where developers share and connect.
