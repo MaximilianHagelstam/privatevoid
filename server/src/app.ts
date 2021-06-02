@@ -10,7 +10,7 @@ import { homeRouter } from "./routes";
 // Test db connection
 db.authenticate()
   .then(() => {
-    logger.info("Connected to db");
+    logger.info("Connected to DB");
   })
   .catch((err) => {
     logger.error(`Error connecting to db: ${err}`);
