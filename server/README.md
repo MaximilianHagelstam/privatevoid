@@ -1,5 +1,7 @@
 # Node.js backend
 
+![Node js workflow](https://github.com/MaximilianHagelstam/privatevoid/actions/workflows/node.js.yml/badge.svg)
+
 ## Scripts
 
 | Script          | Description                                   |
