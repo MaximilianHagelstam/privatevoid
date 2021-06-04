@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: cd server
       - run: npm install -g yarn
       - name: yarn install, build and test
         run: |
