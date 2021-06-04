@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Build and test
 
 on:
   push:
@@ -12,15 +12,17 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd server
-      - run: npm install
-      - run: npm run build
-      - run: npm test
+      - run: npm install -g yarn
+      - name: yarn install, build and test
+        run: |
+          yarn install
+          yarn build
+          yarn test
