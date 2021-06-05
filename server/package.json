@@ -1,7 +1,7 @@
 {
   "name": "privatevoid",
   "version": "1.0.0",
-  "description": "A place where developers share and connect",
+  "description": "Article sharing platform for developers",
   "main": "dist/server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node dist/server.js",
