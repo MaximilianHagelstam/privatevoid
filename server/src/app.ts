@@ -2,10 +2,10 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import logger from "./config/logger";
-import { db } from "./config/database";
+import db from "./config/database";
 
 // Controllers
-import { homeRouter } from "./routes";
+import { apiRouter, homeRouter } from "./routes";
 
 // Test db connection
 db.authenticate()
@@ -24,5 +24,6 @@ app.use(express.json());
 
 // Routes
 app.use("/", homeRouter);
+app.use("/api", apiRouter);
 
 export { app };

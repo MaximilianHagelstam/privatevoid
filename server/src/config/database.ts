@@ -23,4 +23,6 @@ if (process.env.NODE_ENV === "production") {
   URI = DEV_URI;
 }
 
-export const db = new Sequelize(URI);
+const db = new Sequelize(URI);
+
+export default db;

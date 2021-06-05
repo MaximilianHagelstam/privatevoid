@@ -1,1 +1,2 @@
-export * from "./homeRoute";
+export * from "./homeRoutes";
+export * from "./apiRoutes";
