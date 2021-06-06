@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Article from './components/Article';
+import Form from './components/Form';
 
 class App extends Component {
   state = {
@@ -16,7 +17,12 @@ class App extends Component {
   }
 
   render() {
-    return <Article articles={this.state.articles} />;
+    return (
+      <div>
+        <Article articles={this.state.articles} />
+        <Form />
+      </div>
+    );
   }
 }
 
