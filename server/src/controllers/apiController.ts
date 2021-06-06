@@ -28,7 +28,6 @@ export const showArticles = async (
 ): Promise<void> => {
   try {
     const article = await Article.findAll();
-    logger.info(article);
     res.json(article);
   } catch (err) {
     logger.error(err);
