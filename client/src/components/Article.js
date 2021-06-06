@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Contacts = ({ articles }) => {
+const Article = ({ articles }) => {
   return (
     <div>
       <h1>Articles</h1>
@@ -17,4 +17,4 @@ const Contacts = ({ articles }) => {
   );
 };
 
-export default Contacts;
+export default Article;
