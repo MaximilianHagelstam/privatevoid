@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+import cors from "cors";
 import express from "express";
 import logger from "./config/logger";
 import db from "./config/database";
@@ -21,6 +22,7 @@ const app = express();
 // Configure express
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.use("/", homeRouter);
