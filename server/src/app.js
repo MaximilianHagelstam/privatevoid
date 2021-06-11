@@ -12,7 +12,7 @@ const api = require('./routes/apiRoutes');
 const app = express();
 
 // Configure express
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Test db connection
