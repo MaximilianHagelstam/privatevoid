@@ -1,15 +1,11 @@
-import { Response, Request } from "express";
-import Article from "../models/Article";
-import logger from "../config/logger";
+const logger = require('../config/logger');
+const Article = require('../models/Article');
 
 /**
  * Create a new article in the db
  * @route POST /api/add
  */
-export const addArticle = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+const addArticle = async (req, res) => {
   try {
     const article = await Article.create(req.body);
     res.json(article);
@@ -22,10 +18,7 @@ export const addArticle = async (
  * Show all articles
  * @route GET /api/show
  */
-export const showArticles = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+const showArticles = async (req, res) => {
   try {
     const article = await Article.findAll();
     res.json(article);
@@ -33,3 +26,5 @@ export const showArticles = async (
     logger.error(err);
   }
 };
+
+module.exports = { addArticle, showArticles };

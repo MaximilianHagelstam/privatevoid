@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import db from "../config/database";
+const { DataTypes } = require('sequelize');
+const db = require('../config/db');
 
-const Article = db.define("Article", {
+const Article = db.define('Article', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -18,4 +18,4 @@ const Article = db.define("Article", {
   },
 });
 
-export default Article;
+module.exports = Article;
