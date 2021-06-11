@@ -1,29 +1,24 @@
-import React, { Component } from 'react';
-import Article from './components/Article';
-import Form from './components/Form';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
-class App extends Component {
-  state = {
-    articles: [],
-  };
+const fetchData = () => {
+  return axios
+    .get('http://localhost:8080/api/show')
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
 
-  componentDidMount() {
-    fetch('http://localhost:8080/api/show')
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ articles: data });
-      })
-      .catch(console.log);
-  }
-
-  render() {
-    return (
-      <div>
-        <Article articles={this.state.articles} />
-        <Form />
-      </div>
-    );
-  }
+export default function App() {
+  useEffect(() => {
+    fetchData();
+  }, []);
+  return (
+    <div className="App">
+      <h1>Penis</h1>
+    </div>
+  );
 }
-
-export default App;
