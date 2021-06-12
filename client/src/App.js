@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const fetchData = () => {
   return axios
     .get('http://localhost:8080/api/show')
     .then((res) => {
-      console.log(res.data);
+      const { data } = res;
+      console.log(data);
+      return data;
     })
     .catch((err) => {
       console.error(err);
@@ -13,12 +15,22 @@ const fetchData = () => {
 };
 
 export default function App() {
+  const [articles, setArticles] = useState([]);
+
   useEffect(() => {
-    fetchData();
+    fetchData().then((articles) => {
+      setArticles(articles);
+    });
   }, []);
+
   return (
     <div className="App">
-      <h1>Penis</h1>
+      <h1>Articles</h1>
+      {articles.map((article, articleIdx) => (
+        <div key={articleIdx}>
+          {article.title} - {article.description}
+        </div>
+      ))}
     </div>
   );
 }
