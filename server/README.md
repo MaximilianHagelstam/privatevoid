@@ -2,8 +2,8 @@
 
 ## Scripts
 
-| Script              | Description                      |
-| ------------------- | -------------------------------- |
-| `yarn start`        | Runs the app in the production.  |
-| `yarn run dev`      | Runs the app in the development. |
-| `yarn run start-db` | Start the local database.        |
+| Script          | Description                      |
+| --------------- | -------------------------------- |
+| `yarn start`    | Runs the app in the production.  |
+| `yarn dev`      | Runs the app in the development. |
+| `yarn start-db` | Start the local database.        |
