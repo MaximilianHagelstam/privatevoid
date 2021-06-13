@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 
 const User = db.define('User', {
-  googleId: {
+  githubId: {
     type: DataTypes.TEXT,
     primaryKey: true,
     allowNull: false,
