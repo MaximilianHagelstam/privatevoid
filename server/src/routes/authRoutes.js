@@ -5,14 +5,13 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/github', passport.authenticate('github', { scope: ['profile'] }));
-
+router.get('/logout', authController.logout);
 router.get(
   '/github/callback',
-  passport.authenticate('github', { failureRedirect: '/login ' }),
+  passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/');
+    res.redirect('/profile');
   }
 );
-router.get('/logout', authController.logout);
 
 module.exports = router;

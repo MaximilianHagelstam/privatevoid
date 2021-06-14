@@ -5,4 +5,8 @@ const sayHello = (req, res) => {
   res.send('Hello');
 };
 
-module.exports = { sayHello };
+const profile = (req, res) => {
+  res.json(req.user);
+};
+
+module.exports = { sayHello, profile };

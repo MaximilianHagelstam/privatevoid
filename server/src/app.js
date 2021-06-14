@@ -15,19 +15,28 @@ require('./config/passport')(passport);
 
 const app = express();
 
+const day = 24 * 60 * 60 * 1000;
+
 // Configure express
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   session({
+    name: 'session',
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
       secure: false,
-      maxAge: 8600,
+      maxAge: day,
     },
   })
 );
