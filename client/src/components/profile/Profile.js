@@ -1,4 +1,4 @@
-import { Header } from './Header';
+import { Header } from '../common/Header';
 import React, { useState, useEffect } from 'react';
 
 const fetchUser = () => {
@@ -15,7 +15,7 @@ const fetchUser = () => {
   return user;
 };
 
-export const HomePage = () => {
+export const Profile = () => {
   const [user, setUser] = useState({});
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -43,15 +43,14 @@ export const HomePage = () => {
 
   return (
     <div>
-      <Header authenticated={authenticated} />
+      <Header />
       <div>
         {!authenticated ? (
           <h1>You are logged out</h1>
         ) : (
           <div>
-            <h1>You are logged in</h1>
-            <h2>Name: {user.displayName}</h2>
-            <h2>Id: {user.githubId}</h2>
+            <h1>Name: {user.displayName}</h1>
+            <h1>Id: {user.githubId}</h1>
           </div>
         )}
       </div>

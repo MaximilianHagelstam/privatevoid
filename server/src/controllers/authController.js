@@ -14,7 +14,7 @@ const sendUser = (req, res) => {
 };
 
 const successRedirect = (req, res) => {
-  res.redirect(process.env.CLIENT_HOME_PAGE);
+  res.redirect(`${process.env.CLIENT_HOME_PAGE}profile`);
 };
 
 module.exports = {
