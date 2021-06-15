@@ -15,7 +15,7 @@ import { AppRouter } from './AppRouter';
 //     });
 // };
 
-export default function App() {
+export const App = () => {
   // const [articles, setArticles] = useState([]);
 
   // useEffect(() => {
@@ -35,4 +35,4 @@ export default function App() {
     // </div>
     <AppRouter />
   );
-}
+};

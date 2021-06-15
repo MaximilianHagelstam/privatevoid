@@ -18,7 +18,7 @@ export default class HomePage extends Component {
 
   componentDidMount() {
     // Fetch does not send cookies. So you should add credentials: 'include'
-    fetch('http://localhost:8080/profile', {
+    fetch('http://localhost:8080/auth/user', {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -28,8 +28,11 @@ export default class HomePage extends Component {
       },
     })
       .then((response) => {
-        if (response.status === 200) return response.json();
-        throw new Error('failed to authenticate user');
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('failed to authenticate user');
+        }
       })
       .then((responseJson) => {
         this.setState({
@@ -37,10 +40,10 @@ export default class HomePage extends Component {
           user: responseJson,
         });
       })
-      .catch((error) => {
+      .catch((err) => {
         this.setState({
           authenticated: false,
-          error: 'Failed to authenticate user',
+          error: err,
         });
       });
   }
