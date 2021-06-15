@@ -1,17 +1,17 @@
 const express = require('express');
 const passport = require('passport');
 const authController = require('../controllers/authController');
+const authCheck = require('../middleware/authCheck');
 
 const router = express.Router();
 
 router.get('/github', passport.authenticate('github', { scope: ['profile'] }));
 router.get('/logout', authController.logout);
+router.get('/user', authCheck, authController.sendUser);
 router.get(
   '/github/callback',
-  passport.authenticate('github', { failureRedirect: '/' }),
-  (req, res) => {
-    res.redirect('http://localhost:3000/');
-  }
+  passport.authenticate('github', { failureRedirect: '/auth/user' }),
+  authController.successRedirect
 );
 
 module.exports = router;

@@ -3,9 +3,22 @@ const logger = require('../config/logger');
 const logout = (req, res) => {
   req.logout();
   logger.info('User signed out');
-  res.redirect('/');
+  res.redirect(process.env.CLIENT_HOME_PAGE);
+};
+
+const sendUser = (req, res) => {
+  const { user } = req;
+
+  logger.info(`Send user ${user}`);
+  res.json(user);
+};
+
+const successRedirect = (req, res) => {
+  res.redirect(process.env.CLIENT_HOME_PAGE);
 };
 
 module.exports = {
   logout,
+  sendUser,
+  successRedirect,
 };
