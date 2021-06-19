@@ -9,7 +9,7 @@ const logout = (req, res) => {
 const sendUser = (req, res) => {
   const { user } = req;
 
-  logger.info(`Send user ${user}`);
+  logger.debug(JSON.stringify(user));
   res.json(user);
 };
 

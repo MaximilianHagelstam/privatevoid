@@ -8,7 +8,7 @@ const logFormat = printf(
 );
 
 const logger = createLogger({
-  level: 'info',
+  level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
   format: combine(
     format.colorize(),
     format.timestamp({ format: 'YYY-MM-DD HH:mm:ss' }),

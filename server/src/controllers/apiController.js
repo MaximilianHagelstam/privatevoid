@@ -5,10 +5,11 @@ const Article = require('../models/Article');
  * Create a new article in the db
  * @route POST /api/add
  */
-const addArticle = async (req, res) => {
+const addArticle = async (req) => {
   try {
     const article = await Article.create(req.body);
-    res.json(article);
+
+    logger.debug(JSON.stringify(article));
   } catch (err) {
     logger.error(err);
   }
@@ -20,8 +21,10 @@ const addArticle = async (req, res) => {
  */
 const showArticles = async (req, res) => {
   try {
-    const article = await Article.findAll();
-    res.json(article);
+    const articles = await Article.findAll();
+
+    logger.debug(JSON.stringify(articles));
+    res.json(articles);
   } catch (err) {
     logger.error(err);
   }
