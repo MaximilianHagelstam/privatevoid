@@ -4,6 +4,7 @@ const Article = require('../models/Article');
 /**
  * Create a new article in the db
  * @route POST /api/add
+ * @param  {} req
  */
 const addArticle = async (req) => {
   try {
@@ -18,6 +19,8 @@ const addArticle = async (req) => {
 /**
  * Show all articles
  * @route GET /api/show
+ * @param  {} req
+ * @param  {} res
  */
 const showArticles = async (req, res) => {
   try {
