@@ -24,6 +24,11 @@ export const Header = () => {
           </Link>
         </li>
         <li className="navbar-item">
+          <Link to="/articles" className="nav-link">
+            Articles
+          </Link>
+        </li>
+        <li className="navbar-item">
           <Link onClick={handleSignInClick} className="nav-link">
             Login
           </Link>
