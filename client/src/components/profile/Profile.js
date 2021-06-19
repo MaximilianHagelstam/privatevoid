@@ -43,17 +43,14 @@ export const Profile = () => {
 
   return (
     <div>
-      <Header />
-      <div>
-        {!authenticated ? (
-          <h1>You are logged out</h1>
-        ) : (
-          <div>
-            <h1>Name: {user.displayName}</h1>
-            <h1>Id: {user.githubId}</h1>
-          </div>
-        )}
-      </div>
+      {!authenticated ? (
+        <h1>You are logged out</h1>
+      ) : (
+        <div>
+          <h1>Name: {user.displayName}</h1>
+          <h1>Id: {user.githubId}</h1>
+        </div>
+      )}
     </div>
   );
 };
