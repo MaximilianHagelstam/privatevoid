@@ -1,4 +1,3 @@
-import { Header } from '../common/Header';
 import React, { useState, useEffect } from 'react';
 
 const fetchUser = () => {
