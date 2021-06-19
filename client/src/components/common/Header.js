@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const handleSignInClick = () => {
   window.open('http://localhost:8080/auth/github', '_self');
@@ -11,20 +11,31 @@ const handleLogoutClick = () => {
 
 export const Header = () => {
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/">PrivateVoid</Navbar.Brand>
-      <Navbar.Toggle aria-controls="navbarScroll" />
-      <Navbar.Collapse id="navbarScroll">
-        <Nav
-          className="mr-auto my-2 my-lg-0"
-          style={{ maxHeight: '100px' }}
-          navbarScroll
-        >
-          <Nav.Link href="/profile">Profile</Nav.Link>
-          <Nav.Link onClick={handleLogoutClick}>Logout</Nav.Link>
-          <Nav.Link onClick={handleSignInClick}>Login</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <div>
+      <nav className="navbar bg-light navbar-expand-lg navbar-light">
+        <ul className="navbar-nav mr-auto">
+          <li className="navbar-item">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/profile" className="nav-link">
+              Profile
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link onClick={handleSignInClick} className="nav-link">
+              Login
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link onClick={handleLogoutClick} className="nav-link">
+              Logout
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };

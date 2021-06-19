@@ -1,6 +1,13 @@
 import React from 'react';
-import { AppRouter } from './AppRouter';
+import { Route, Switch } from 'react-router-dom';
+import { Home } from './components/home/Home';
+import { Profile } from './components/profile/Profile';
 
 export const App = () => {
-  return <AppRouter />;
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/profile" component={Profile} />
+    </Switch>
+  );
 };
