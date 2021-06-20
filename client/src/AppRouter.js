@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Home } from './components/home/Home';
 import { Profile } from './components/profile/Profile';
 import { ArticelsList } from './components/articleList/ArticleList';
-import AddArticle from './components/addArticle/addArticle';
+import { AddArticle } from './components/addArticle/AddArticle';
 
 export const AppRouter = () => {
   return (
