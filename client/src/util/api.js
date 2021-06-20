@@ -10,3 +10,17 @@ export const addArticle = (data) =>
     },
     body: JSON.stringify(data),
   });
+
+export const fetchUser = () => {
+  const user = fetch('http://localhost:8080/auth/user', {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+  });
+
+  return user;
+};

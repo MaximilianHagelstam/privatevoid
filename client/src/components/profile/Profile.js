@@ -1,18 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-const fetchUser = () => {
-  const user = fetch('http://localhost:8080/auth/user', {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Credentials': true,
-    },
-  });
-
-  return user;
-};
+import { fetchUser } from '../../util/api';
 
 export const Profile = () => {
   const [user, setUser] = useState({});
