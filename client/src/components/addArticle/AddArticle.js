@@ -19,15 +19,41 @@ export const AddArticle = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name="title" value={title} onChange={onTitleChange} />
-      <input
-        type="text"
-        name="description"
-        value={description}
-        onChange={onDescriptionChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="container">
+      <div className="mt-3">
+        <h1>Add Article</h1>
+        <form onSubmit={onSubmit}>
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">
+              Title:
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="title"
+              value={title}
+              onChange={onTitleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">
+              Description:
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="description"
+              value={description}
+              onChange={onDescriptionChange}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">
+              Publish article
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };

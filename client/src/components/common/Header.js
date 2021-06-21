@@ -30,7 +30,7 @@ export const Header = () => {
         </li>
         <li className="navbar-item">
           <Link to="/add" className="nav-link">
-            Ad Article
+            Add Article
           </Link>
         </li>
         <li className="navbar-item">

@@ -28,15 +28,18 @@ export const Profile = () => {
   }, []);
 
   return (
-    <div>
-      {!authenticated ? (
-        <h1>You are logged out</h1>
-      ) : (
-        <div>
-          <h1>Name: {user.displayName}</h1>
-          <h1>Id: {user.githubId}</h1>
-        </div>
-      )}
+    <div className="container">
+      <div className="mt-3">
+        {!authenticated ? (
+          <h1>You are logged out</h1>
+        ) : (
+          <div>
+            <h1>Profile</h1>
+            <h5>Name: {user.displayName}</h5>
+            <h5>Id: {user.githubId}</h5>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export const ArticelsList = () => {
   return (
     <div className="container">
       <div className="mt-3">
-        <h3>Articles</h3>
+        <h1>Articles</h1>
         <table className="table table-striped mt-3">
           <thead>
             <tr>
