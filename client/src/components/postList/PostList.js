@@ -27,7 +27,7 @@ export const PostList = () => {
             {posts.map((post) => (
               <tr key={post.id}>
                 <td>{post.message}</td>
-                <td>{post.author_display_name}</td>
+                <td>Bob Bobber</td>
               </tr>
             ))}
           </tbody>

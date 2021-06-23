@@ -6,7 +6,6 @@ const createPost = async (req) => {
     const newPost = {
       message: req.body.message,
       author_id: req.user.id,
-      author_display_name: req.user.display_name,
     };
 
     const post = await Post.create(newPost);

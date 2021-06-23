@@ -10,10 +10,6 @@ const Post = db.define('posts', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  author_display_name: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
 });
 
 module.exports = Post;
