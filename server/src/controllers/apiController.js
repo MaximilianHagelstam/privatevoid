@@ -1,12 +1,12 @@
 const logger = require('../config/logger');
 const Post = require('../models/Post');
-const User = require('../models/User');
 
 const createPost = async (req) => {
   try {
     const newPost = {
       message: req.body.message,
       author_id: req.user.id,
+      author_display_name: req.user.display_name,
     };
 
     const post = await Post.create(newPost);
@@ -37,13 +37,4 @@ const sendCurrentUser = (req, res) => {
   res.json(user);
 };
 
-const sendUserById = async (req, res) => {
-  const userId = req.params.id;
-
-  const user = await User.findByPk(userId);
-
-  logger.debug(JSON.stringify(user));
-  res.json(user);
-};
-
-module.exports = { createPost, readPosts, sendCurrentUser, sendUserById };
+module.exports = { createPost, readPosts, sendCurrentUser };

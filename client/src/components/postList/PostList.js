@@ -20,12 +20,14 @@ export const PostList = () => {
           <thead>
             <tr>
               <th>Message</th>
+              <th>Author</th>
             </tr>
           </thead>
           <tbody>
             {posts.map((post) => (
               <tr key={post.id}>
                 <td>{post.message}</td>
+                <td>{post.author_display_name}</td>
               </tr>
             ))}
           </tbody>
