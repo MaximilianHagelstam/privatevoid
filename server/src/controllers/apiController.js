@@ -1,5 +1,6 @@
 const logger = require('../config/logger');
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 const createPost = async (req) => {
   try {
@@ -36,4 +37,13 @@ const sendCurrentUser = (req, res) => {
   res.json(user);
 };
 
-module.exports = { createPost, readPosts, sendCurrentUser };
+const sendUserById = async (req, res) => {
+  const userId = req.params.id;
+
+  const user = await User.findByPk(userId);
+
+  logger.debug(JSON.stringify(user));
+  res.json(user);
+};
+
+module.exports = { createPost, readPosts, sendCurrentUser, sendUserById };
