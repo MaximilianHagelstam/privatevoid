@@ -15,5 +15,5 @@ CREATE TABLE posts (
     message text NOT NULL,
     "createdAt" date NOT NULL,
     "updatedAt" date NOT NULL,
-    author_id int REFERENCES users(id) NOT NULL
+    -- author_id int REFERENCES users(id) NOT NULL
 );

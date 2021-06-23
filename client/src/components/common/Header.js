@@ -24,13 +24,13 @@ export const Header = () => {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link to="/articles" className="nav-link">
-            Articles
+          <Link to="/posts" className="nav-link">
+            Posts
           </Link>
         </li>
         <li className="navbar-item">
-          <Link to="/add" className="nav-link">
-            Add Article
+          <Link to="/create-post" className="nav-link">
+            Create Post
           </Link>
         </li>
         <li className="navbar-item">

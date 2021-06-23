@@ -35,8 +35,12 @@ export const Profile = () => {
         ) : (
           <div>
             <h1>Profile</h1>
-            <h5>Name: {user.displayName}</h5>
-            <h5>Id: {user.githubId}</h5>
+            <img src={user.image_url} alt="Italian Trulli"></img>
+            <h5>Id: {user.id}</h5>
+            <h5>Name: {user.display_name}</h5>
+            <h5>Username: @{user.username}</h5>
+            <h5>Bio: {user.bio}</h5>
+            <h5>Profile Picture: {user.image_url}</h5>
           </div>
         )}
       </div>

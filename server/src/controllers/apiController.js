@@ -3,7 +3,11 @@ const Post = require('../models/Post');
 
 const createPost = async (req) => {
   try {
-    const post = await Post.create(req.body);
+    const newPost = {
+      message: req.body.message,
+    };
+
+    const post = await Post.create(newPost);
 
     logger.debug(JSON.stringify(post));
     logger.info('Post created');
