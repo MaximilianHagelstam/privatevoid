@@ -4,15 +4,17 @@ export const getPosts = () =>
 export const createPost = (data) =>
   fetch('http://localhost:8080/api/create-post', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
     },
     body: JSON.stringify(data),
   });
 
 export const fetchUser = () => {
-  const user = fetch('http://localhost:8080/auth/user', {
+  const user = fetch('http://localhost:8080/api/current-user', {
     method: 'GET',
     credentials: 'include',
     headers: {

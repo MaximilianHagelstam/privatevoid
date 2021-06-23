@@ -5,6 +5,7 @@ const createPost = async (req) => {
   try {
     const newPost = {
       message: req.body.message,
+      author_id: req.user.id,
     };
 
     const post = await Post.create(newPost);
@@ -28,4 +29,11 @@ const readPosts = async (req, res) => {
   }
 };
 
-module.exports = { createPost, readPosts };
+const sendCurrentUser = (req, res) => {
+  const { user } = req;
+
+  logger.debug(JSON.stringify(user));
+  res.json(user);
+};
+
+module.exports = { createPost, readPosts, sendCurrentUser };
