@@ -1,10 +1,10 @@
 {
-  "name": "node-postgres-starter",
+  "name": "privatevoid",
   "version": "1.0.0",
-  "description": "Starter template for using Node.js with PostgreSQL",
+  "description": "Twitter for developers",
   "main": "src/server.js",
-  "repository": "https://github.com/MaximilianHagelstam/node-postgres-starter.git",
-  "author": "Maximilian Hagelstam <maximilian.hagelstam@gmail.com>",
+  "repository": "https://github.com/MaximilianHagelstam/privatevoid.git",
+  "author": "Maximilian Hagelstam",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=production node src/server.js",
