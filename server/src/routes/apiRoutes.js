@@ -3,7 +3,7 @@ const apiController = require('../controllers/apiController');
 
 const router = express.Router();
 
-router.post('/add', apiController.addArticle);
-router.get('/show', apiController.showArticles);
+router.post('/create-post', apiController.createPost);
+router.get('/read-posts', apiController.readPosts);
 
 module.exports = router;

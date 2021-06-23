@@ -15,7 +15,7 @@ require('./config/passport')(passport);
 
 const app = express();
 
-const day = 24 * 60 * 60 * 1000;
+const DAY = 24 * 60 * 60 * 1000;
 
 // Configure express
 app.use(
@@ -36,7 +36,7 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: false,
-      maxAge: day,
+      maxAge: DAY,
     },
   })
 );

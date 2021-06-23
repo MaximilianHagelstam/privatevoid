@@ -8,16 +8,21 @@ module.exports = (passport) => {
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: 'http://localhost:8080/auth/github/callback',
+        callbackURL: process.env.CALLBACK_URL,
       },
       async (accessToken, refreshToken, profile, done) => {
         const newUser = {
-          githubId: profile.id,
-          displayName: profile.displayName,
+          id: profile.id,
+          username: profile.username,
+          display_name: profile.displayName,
+          image_url: profile.photos[0].value,
+          // eslint-disable-next-line no-underscore-dangle
+          bio: profile._json.bio,
         };
 
         try {
-          let user = await User.findOne({ where: { githubId: profile.id } });
+          let user = await User.findOne({ where: { id: profile.id } });
+          logger.debug(JSON.stringify(user));
 
           if (user) {
             done(null, user);

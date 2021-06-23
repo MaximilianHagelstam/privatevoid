@@ -1,36 +1,27 @@
 const logger = require('../config/logger');
-const Article = require('../models/Article');
+const Post = require('../models/Post');
 
-/**
- * Create a new article in the db
- * @route POST /api/add
- * @param  {} req
- */
-const addArticle = async (req) => {
+const createPost = async (req) => {
   try {
-    const article = await Article.create(req.body);
+    const post = await Post.create(req.body);
 
-    logger.debug(JSON.stringify(article));
+    logger.debug(JSON.stringify(post));
+    logger.info('Post created');
   } catch (err) {
-    logger.error(err);
+    logger.error(`Error creating post: ${err}`);
   }
 };
 
-/**
- * Show all articles
- * @route GET /api/show
- * @param  {} req
- * @param  {} res
- */
-const showArticles = async (req, res) => {
+const readPosts = async (req, res) => {
   try {
-    const articles = await Article.findAll();
+    const posts = await Post.findAll();
 
-    logger.debug(JSON.stringify(articles));
-    res.json(articles);
+    logger.debug(JSON.stringify(posts));
+    res.json(posts);
+    logger.info('Posts read');
   } catch (err) {
-    logger.error(err);
+    logger.error(`Error reading posts: ${err}`);
   }
 };
 
-module.exports = { addArticle, showArticles };
+module.exports = { createPost, readPosts };
