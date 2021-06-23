@@ -8,7 +8,7 @@ import { CreatePost } from './components/createPost/CreatePost';
 export const AppRouter = () => {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
       <Route path="/profile" component={Profile} />
       <Route path="/posts" component={PostList} />
       <Route path="/create-post" component={CreatePost} />

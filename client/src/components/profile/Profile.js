@@ -7,17 +7,17 @@ export const Profile = () => {
 
   useEffect(() => {
     fetchUser()
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
         } else {
           console.log('User not authenticated');
         }
       })
-      .then((responseJson) => {
-        if (responseJson) {
+      .then((resJson) => {
+        if (resJson) {
           setAuthenticated(true);
-          setUser(responseJson);
+          setUser(resJson);
         } else {
           setAuthenticated(false);
         }
@@ -35,12 +35,11 @@ export const Profile = () => {
         ) : (
           <div>
             <h1>Profile</h1>
-            <img src={user.image_url} alt="Italian Trulli"></img>
+            <img src={user.image_url} alt="Profile"></img>
             <h5>Id: {user.id}</h5>
             <h5>Name: {user.display_name}</h5>
             <h5>Username: @{user.username}</h5>
             <h5>Bio: {user.bio}</h5>
-            <h5>Profile Picture: {user.image_url}</h5>
           </div>
         )}
       </div>
