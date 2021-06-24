@@ -8,7 +8,8 @@ export const ToggleTheme = () => {
       icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
       isRound="true"
       size="lg"
-      alignSelf="flex-end"
+      // alignSelf="flex-end"
+      variant="ghost"
       onClick={toggleColorMode}
     />
   );
