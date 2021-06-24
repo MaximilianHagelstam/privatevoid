@@ -11,7 +11,7 @@ export const Login = () => {
     <Flex width="full" align="center" justifyContent="center">
       <Box p={8} maxWidth="500px" borderRadius={8}>
         <Box textAlign="center">
-          <Heading>Sign in to PrivateVoid</Heading>
+          <Heading>Log in to PrivateVoid</Heading>
         </Box>
         <Box my={4} textAlign="left">
           <Button
@@ -21,6 +21,7 @@ export const Login = () => {
             leftIcon={<FaGithub />}
             width="full"
             mt={4}
+            rounded={'full'}
           >
             GitHub
           </Button>
