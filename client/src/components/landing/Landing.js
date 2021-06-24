@@ -50,7 +50,7 @@ export const Landing = () => {
             PrivateVoid
           </Text>
         </Heading>
-        <Text color={'gray'} maxW={'3xl'}>
+        <Text colorScheme={'gray'} maxW={'3xl'}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta
           minus molestiae vel beatae natus eveniet ratione temporibus aperiam
           harum alias officiis assumenda officia quibusdam deleniti eos
@@ -58,12 +58,7 @@ export const Landing = () => {
         </Text>
         <Stack spacing={6} direction={'row'}>
           <Link to="/login">
-            <Button
-              rounded={'full'}
-              px={6}
-              colorScheme={'purple'}
-              _hover={{ bg: 'purple.600' }}
-            >
+            <Button rounded={'full'} px={6} colorScheme={'purple'}>
               Get started
             </Button>
           </Link>

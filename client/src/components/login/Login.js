@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Center } from '@chakra-ui/react';
+import { Button, Flex, Box, Heading } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 
 const handleSignInClick = () => {
@@ -8,15 +8,24 @@ const handleSignInClick = () => {
 
 export const Login = () => {
   return (
-    <Center>
-      <Button
-        onClick={handleSignInClick}
-        colorScheme="purple"
-        size="lg"
-        leftIcon={<FaGithub />}
-      >
-        GitHub
-      </Button>
-    </Center>
+    <Flex width="full" align="center" justifyContent="center">
+      <Box p={8} maxWidth="500px" borderRadius={8}>
+        <Box textAlign="center">
+          <Heading>Sign in to PrivateVoid</Heading>
+        </Box>
+        <Box my={4} textAlign="left">
+          <Button
+            onClick={handleSignInClick}
+            colorScheme="purple"
+            size="lg"
+            leftIcon={<FaGithub />}
+            width="full"
+            mt={4}
+          >
+            GitHub
+          </Button>
+        </Box>
+      </Box>
+    </Flex>
   );
 };
