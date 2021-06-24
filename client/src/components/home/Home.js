@@ -1,11 +1,11 @@
 import React from 'react';
+import { Logout } from './Logout';
 
 export const Home = () => {
   return (
-    <div className="container">
-      <div className="mt-3">
-        <h1>Welcome to PrivateVoid</h1>
-      </div>
+    <div>
+      <h1>Welcome to PrivateVoid</h1>
+      <Logout />
     </div>
   );
 };
