@@ -4,6 +4,7 @@ import { Home } from './components/home/Home';
 import { Profile } from './components/profile/Profile';
 import { PostList } from './components/postList/PostList';
 import { CreatePost } from './components/createPost/CreatePost';
+import { Login } from './components/login/Login';
 
 export const AppRouter = () => {
   return (
@@ -12,6 +13,7 @@ export const AppRouter = () => {
       <Route path="/profile" component={Profile} />
       <Route path="/posts" component={PostList} />
       <Route path="/create-post" component={CreatePost} />
+      <Route path="/login" component={Login} />
     </Switch>
   );
 };

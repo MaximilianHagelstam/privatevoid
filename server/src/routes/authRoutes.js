@@ -9,7 +9,7 @@ router.get('/logout', authController.logout);
 router.get(
   '/github/callback',
   passport.authenticate('github', {
-    failureRedirect: process.env.CLIENT_HOME_PAGE,
+    failureRedirect: process.env.CLIENT_HOME,
   }),
   authController.successRedirect
 );
