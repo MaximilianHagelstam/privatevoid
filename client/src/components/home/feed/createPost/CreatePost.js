@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPost } from '../../util/api';
+import { createPost } from '../../../../util/api';
 
 export const CreatePost = () => {
   const [message, setMessage] = useState('');

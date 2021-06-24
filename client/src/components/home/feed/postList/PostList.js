@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getPosts } from '../../util/api';
+import { getPosts } from '../../../../util/api';
 
 export const PostList = () => {
   const [posts, setPosts] = useState([]);
