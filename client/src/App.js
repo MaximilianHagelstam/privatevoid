@@ -1,7 +1,13 @@
 import React from 'react';
 
 import { AppRouter } from './AppRouter';
+import { ToggleTheme } from './ToggleTheme';
 
 export const App = () => {
-  return <AppRouter />;
+  return (
+    <div>
+      <AppRouter />
+      <ToggleTheme />
+    </div>
+  );
 };
