@@ -5,7 +5,7 @@ export const ToggleTheme = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <IconButton
-      icon={colorMode === 'light' ? <FaSun /> : <FaMoon />}
+      icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
       isRound="true"
       size="lg"
       alignSelf="flex-end"
