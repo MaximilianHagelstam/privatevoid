@@ -1,12 +1,14 @@
 import React from 'react';
-
-import { Logout } from './Logout';
+import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 
 export const Home = () => {
   return (
     <div>
       <h1>Welcome to PrivateVoid</h1>
-      <Logout />
+      <Link to="/logout">
+        <Button colorScheme="green">Logout</Button>
+      </Link>
     </div>
   );
 };
