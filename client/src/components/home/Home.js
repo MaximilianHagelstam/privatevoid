@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 
+import { ToggleTheme } from './sidebar/ToggleTheme';
+
 export const Home = () => {
   return (
     <div>
@@ -9,6 +11,7 @@ export const Home = () => {
       <Link to="/logout">
         <Button colorScheme="green">Logout</Button>
       </Link>
+      <ToggleTheme />
     </div>
   );
 };
