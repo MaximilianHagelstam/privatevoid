@@ -40,7 +40,7 @@ export const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
         >
           {subtitle}
         </Heading>
-        <LandingButton text="Get Started" />
+        <LandingButton text="Get Started" buttonLink="/login" />
       </Stack>
       <Box w={{ base: '80%', sm: '60%', md: '50%' }} mb={{ base: 12, md: 0 }}>
         <Image src={image} size="100%" rounded="1rem" shadow="2xl" />
