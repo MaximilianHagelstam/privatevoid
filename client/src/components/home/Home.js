@@ -9,7 +9,7 @@ export const Home = () => {
     <div>
       <h1>Welcome to PrivateVoid</h1>
       <Link to="/logout">
-        <Button colorScheme="green">Logout</Button>
+        <Button colorScheme="purple">Logout</Button>
       </Link>
       <ToggleTheme />
     </div>

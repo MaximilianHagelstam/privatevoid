@@ -11,7 +11,7 @@ export const Login = () => {
     <Center>
       <Button
         onClick={handleSignInClick}
-        colorScheme="red"
+        colorScheme="purple"
         size="lg"
         leftIcon={<FaGithub />}
       >

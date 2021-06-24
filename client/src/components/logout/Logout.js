@@ -9,7 +9,7 @@ export const Logout = () => {
   return (
     <Button
       onClick={handleLogoutClick}
-      colorScheme="green"
+      colorScheme="purple"
       variant="ghost"
       size="md"
     >
