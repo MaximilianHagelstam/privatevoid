@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 
 import { Sidebar } from './sidebar/Sidebar';
+import { Feed } from './feed/Feed';
 
 export const Home = () => {
   return (
@@ -17,7 +18,7 @@ export const Home = () => {
         alignItems="center"
         padding="24px"
       >
-        Feed
+        <Feed />
       </Box>
       <Box
         w="25%"
