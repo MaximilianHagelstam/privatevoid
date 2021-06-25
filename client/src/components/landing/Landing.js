@@ -26,7 +26,6 @@ export const Landing = () => {
       },
     }).then((res) => {
       if (res.status === 200) {
-        console.log('You are logged in');
         history.push('/home');
       }
     });
