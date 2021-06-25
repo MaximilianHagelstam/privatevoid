@@ -1,16 +1,17 @@
-import { IconButton, useColorMode } from '@chakra-ui/react';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { Button, useColorMode } from '@chakra-ui/react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 
 export const ToggleTheme = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <IconButton
-      icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
-      isRound="true"
+    <Button
+      leftIcon={colorMode === 'light' ? <FiMoon /> : <FiSun />}
+      rounded={'full'}
       size="lg"
-      // alignSelf="flex-end"
       variant="ghost"
       onClick={toggleColorMode}
-    />
+    >
+      Theme
+    </Button>
   );
 };
