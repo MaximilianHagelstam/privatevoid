@@ -31,7 +31,13 @@ export const ComposeButton = () => {
 
   return (
     <div>
-      <Button rounded={'full'} px={6} colorScheme="purple" onClick={onOpen}>
+      <Button
+        rounded={'full'}
+        px={6}
+        colorScheme="purple"
+        onClick={onOpen}
+        marginTop="24px"
+      >
         Compose
       </Button>
 

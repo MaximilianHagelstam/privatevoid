@@ -10,6 +10,7 @@ export const ToggleTheme = () => {
       size="lg"
       variant="ghost"
       onClick={toggleColorMode}
+      paddingInline="14px"
     >
       Theme
     </Button>

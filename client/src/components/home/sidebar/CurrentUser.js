@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Divider, Flex, Avatar, Heading, Text } from '@chakra-ui/react';
+import { Flex, Avatar, Heading, Text } from '@chakra-ui/react';
 import { fetchUser } from '../../../util/api';
 
 export const CurrentUser = () => {
@@ -28,17 +28,14 @@ export const CurrentUser = () => {
   }, [history]);
 
   return (
-    <>
-      <Divider />
-      <Flex mt={4} align="center">
-        <Avatar size="sm" src={user.image_url} />
-        <Flex flexDir="column" ml={4}>
-          <Heading as="h3" size="sm">
-            {user.display_name}
-          </Heading>
-          <Text color="gray">@{user.username}</Text>
-        </Flex>
+    <Flex mt={4} align="center" position="absolute" bottom="0">
+      <Avatar size="md" src={user.image_url} />
+      <Flex flexDir="column" padding="10px">
+        <Heading as="h3" size="sm">
+          {user.display_name}
+        </Heading>
+        <Text color="gray">@{user.username}</Text>
       </Flex>
-    </>
+    </Flex>
   );
 };
