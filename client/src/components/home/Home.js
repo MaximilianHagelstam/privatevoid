@@ -10,23 +10,10 @@ export const Home = () => {
       <Flex w="25%" h="750px" borderRadius="3xl" borderWidth="1px">
         <Sidebar />
       </Flex>
-      <Flex
-        w="50%"
-        h="750"
-        borderRadius="3xl"
-        borderWidth="1px"
-        alignItems="center"
-      >
+      <Flex w="50%" h="750" borderRadius="3xl" borderWidth="1px">
         <Feed />
       </Flex>
-      <Flex
-        w="25%"
-        h="750"
-        borderRadius="3xl"
-        borderWidth="1px"
-        alignItems="center"
-        padding="24px"
-      >
+      <Flex w="25%" h="750" borderRadius="3xl" borderWidth="1px">
         Discover
       </Flex>
     </HStack>

@@ -16,7 +16,7 @@ export const Feed = () => {
   }, []);
 
   return (
-    <Stack spacing={6} alignItems="center" position="relative">
+    <Stack spacing={0}>
       {posts.map((post) => (
         <Post key={post.id} message={post.message} author={post.author_id} />
       ))}
