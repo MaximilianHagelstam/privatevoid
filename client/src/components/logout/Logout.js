@@ -1,6 +1,6 @@
-import React from 'react';
 import { Button, Box, Heading, Text, Stack, Center } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import './Logout.css';
 
 const handleLogoutClick = () => {
   window.open('http://localhost:8080/auth/logout', '_self');
@@ -8,14 +8,7 @@ const handleLogoutClick = () => {
 
 export const Logout = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
+    <div className="logout">
       <Box
         borderRadius="2xl"
         borderWidth="1px"

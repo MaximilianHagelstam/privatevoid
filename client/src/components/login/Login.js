@@ -1,6 +1,6 @@
-import React from 'react';
 import { Button, Flex, Box, Heading } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
+import './Login.css';
 
 const handleSignInClick = () => {
   window.open(`http://localhost:8080/auth/github`, '_self');
@@ -8,14 +8,7 @@ const handleSignInClick = () => {
 
 export const Login = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
+    <div className="login">
       <Flex width="full" align="center" justifyContent="center">
         <Box p={8} maxWidth="500px" borderRadius={8}>
           <Box textAlign="center">

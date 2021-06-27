@@ -1,0 +1,20 @@
+.explore {
+  flex: 0.3;
+}
+
+.explore__input {
+  display: flex;
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.explore__widget {
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
