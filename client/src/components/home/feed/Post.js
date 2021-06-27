@@ -7,7 +7,7 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
       <Box
         maxW={'2xl'}
         w={'full'}
-        borderWidth="1px"
+        boxShadow="md"
         rounded={'3xl'}
         p={6}
         overflow={'hidden'}
@@ -25,7 +25,6 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
             <Text fontSize="lg">{message}</Text>
           </Stack>
         </Stack>
-        <Stack></Stack>
       </Box>
     </div>
   );
