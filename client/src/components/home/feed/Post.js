@@ -1,8 +1,9 @@
-import { Center, Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
+import { Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
+import './Post.css';
 
 export const Post = ({ message, username, displayName, date, avatar }) => {
   return (
-    <Center>
+    <div className="post">
       <Box
         maxW={'2xl'}
         w={'full'}
@@ -26,6 +27,6 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
         </Stack>
         <Stack></Stack>
       </Box>
-    </Center>
+    </div>
   );
 };

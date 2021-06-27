@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Stack } from '@chakra-ui/react';
+import './Feed.css';
 
 import { getPosts } from '../../../util/api';
 import { Post } from './Post';
@@ -16,7 +16,7 @@ export const Feed = () => {
   }, []);
 
   return (
-    <Stack spacing={0}>
+    <div className="feed">
       {posts.map((post) => (
         <Post
           key={post.id}
@@ -27,6 +27,6 @@ export const Feed = () => {
           avatar={post.user.image_url}
         />
       ))}
-    </Stack>
+    </div>
   );
 };
