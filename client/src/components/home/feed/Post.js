@@ -4,7 +4,7 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
   return (
     <Center>
       <Box
-        maxW={'445px'}
+        maxW={'2xl'}
         w={'full'}
         borderWidth="1px"
         rounded={'3xl'}

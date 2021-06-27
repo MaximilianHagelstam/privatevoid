@@ -1,5 +1,5 @@
 import { Stack } from '@chakra-ui/react';
-import { FiMail, FiUser, FiSettings, FiLogOut } from 'react-icons/fi';
+import { FiMail, FiUser, FiSettings, FiLogOut, FiHome } from 'react-icons/fi';
 
 import { NavButton } from './NavButton';
 import { ToggleTheme } from './ToggleTheme';
@@ -10,6 +10,7 @@ export const Sidebar = () => {
   return (
     <Stack spacing={0} alignItems="baseline">
       <ToggleTheme />
+      <NavButton text="Home" link="/home" icon={<FiHome />} />
       <NavButton text="Messages" link="/messages" icon={<FiMail />} />
       <NavButton text="Profile" link="/profile" icon={<FiUser />} />
       <NavButton text="Settings" link="/settings" icon={<FiSettings />} />
