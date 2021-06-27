@@ -5,6 +5,8 @@ const session = require('cookie-session');
 const passport = require('passport');
 
 const db = require('./config/db');
+const User = require('./models/User');
+const Post = require('./models/Post');
 const logger = require('./config/logger');
 
 const home = require('./routes/homeRoutes');
@@ -51,6 +53,9 @@ db.authenticate()
   .catch((err) => {
     logger.error(`Error connecting to DB: ${err}`);
   });
+
+User.hasMany(Post, { foreignKey: 'author_id' });
+Post.belongsTo(User, { foreignKey: 'author_id' });
 
 // Routes
 app.use('/', home);

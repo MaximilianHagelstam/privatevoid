@@ -1,5 +1,6 @@
 const logger = require('../config/logger');
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 const createPost = async (req) => {
   try {
@@ -19,7 +20,15 @@ const createPost = async (req) => {
 
 const readPosts = async (req, res) => {
   try {
-    const posts = await Post.findAll();
+    // const posts = await Post.findAll({ include: User });
+    const posts = await Post.findAll({
+      include: [
+        {
+          model: User,
+          required: true,
+        },
+      ],
+    });
 
     logger.debug(JSON.stringify(posts));
     res.json(posts);

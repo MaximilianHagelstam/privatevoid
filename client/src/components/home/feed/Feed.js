@@ -18,7 +18,14 @@ export const Feed = () => {
   return (
     <Stack spacing={0}>
       {posts.map((post) => (
-        <Post key={post.id} message={post.message} author={post.author_id} />
+        <Post
+          key={post.id}
+          message={post.message}
+          username={post.user.username}
+          date={post.createdAt}
+          displayName={post.user.display_name}
+          avatar={post.user.image_url}
+        />
       ))}
     </Stack>
   );

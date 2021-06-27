@@ -1,6 +1,6 @@
 import { Center, Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
 
-export const Post = ({ message, author }) => {
+export const Post = ({ message, username, displayName, date, avatar }) => {
   return (
     <Center>
       <Box
@@ -12,16 +12,12 @@ export const Post = ({ message, author }) => {
         overflow={'hidden'}
       >
         <Stack direction={'row'} spacing={4}>
-          <Avatar
-            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-            alt={'Author'}
-            size="md"
-          />
+          <Avatar src={avatar} alt={'Author'} size="md" />
           <Stack direction={'column'} spacing={0}>
             <Heading as="h3" size="sm">
-              John Doe{' '}
+              {displayName}{' '}
               <Text as={'span'} color="gray" fontWeight="400">
-                @{author} · 24/6/2021
+                @{username} · {date}
               </Text>
             </Heading>
 
