@@ -4,6 +4,7 @@ import { FiMail, FiUser, FiSettings, FiLogOut, FiHome } from 'react-icons/fi';
 import { NavButton } from './NavButton';
 import { ToggleTheme } from './ToggleTheme';
 import { ComposeButton } from './ComposeButton';
+import { CurrentUser } from './CurrentUser';
 
 export const Sidebar = () => {
   return (
@@ -15,6 +16,7 @@ export const Sidebar = () => {
       <NavButton text="Settings" link="/settings" icon={<FiSettings />} />
       <NavButton text="Log out" link="/logout" icon={<FiLogOut />} />
       <ComposeButton />
+      <CurrentUser />
     </div>
   );
 };

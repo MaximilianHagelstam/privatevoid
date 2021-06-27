@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Flex, Avatar, Heading, Text } from '@chakra-ui/react';
 import { fetchUser } from '../../../util/api';
+import './CurrentUser.css';
 
 export const CurrentUser = () => {
   let history = useHistory();
@@ -28,7 +29,7 @@ export const CurrentUser = () => {
   }, [history]);
 
   return (
-    <Flex mt={4} align="center" position="absolute" bottom="0">
+    <div className="currentUser">
       <Avatar size="md" src={user.image_url} />
       <Flex flexDir="column" padding="10px">
         <Heading as="h3" size="sm">
@@ -36,6 +37,6 @@ export const CurrentUser = () => {
         </Heading>
         <Text color="gray">@{user.username}</Text>
       </Flex>
-    </Flex>
+    </div>
   );
 };
