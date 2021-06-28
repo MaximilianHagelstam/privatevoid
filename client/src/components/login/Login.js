@@ -2,8 +2,10 @@ import { Button, Flex, Box, Heading } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import './Login.css';
 
+const { REACT_APP_API_HOME } = process.env;
+
 const handleSignInClick = () => {
-  window.open(`http://localhost:8080/auth/github`, '_self');
+  window.open(`${REACT_APP_API_HOME}/auth/github`, '_self');
 };
 
 export const Login = () => {

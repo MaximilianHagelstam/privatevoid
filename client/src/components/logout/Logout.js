@@ -2,8 +2,10 @@ import { Button, Box, Heading, Text, Stack, Center } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import './Logout.css';
 
+const { REACT_APP_API_HOME } = process.env;
+
 const handleLogoutClick = () => {
-  window.open('http://localhost:8080/auth/logout', '_self');
+  window.open(`${REACT_APP_API_HOME}/auth/logout`, '_self');
 };
 
 export const Logout = () => {

@@ -11,20 +11,13 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Illustration } from './Illustration';
+import { fetchUser } from '../../util/api';
 
 export const Landing = () => {
   let history = useHistory();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/current-user', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Credentials': true,
-      },
-    }).then((res) => {
+    fetchUser().then((res) => {
       if (res.status === 200) {
         history.push('/home');
       }

@@ -20,10 +20,12 @@ const app = express();
 
 const DAY = 24 * 60 * 60 * 1000;
 
+const { CLIENT_HOME } = process.env;
+
 // Configure express
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: CLIENT_HOME,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
