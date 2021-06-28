@@ -7,6 +7,7 @@ const passport = require('passport');
 const db = require('./config/db');
 const User = require('./models/User');
 const Post = require('./models/Post');
+const Comment = require('./models/Comment');
 const logger = require('./config/logger');
 
 const home = require('./routes/homeRoutes');
@@ -54,8 +55,15 @@ db.authenticate()
     logger.error(`Error connecting to DB: ${err}`);
   });
 
+// User-Post relationship
 User.hasMany(Post, { foreignKey: 'author_id' });
 Post.belongsTo(User, { foreignKey: 'author_id' });
+
+// User-Comment-Post relationship
+Post.hasMany(Comment, { foreignKey: 'post_id' });
+Comment.belongsTo(Post, { foreignKey: 'post_id' });
+User.hasMany(Comment, { foreignKey: 'creator_id' });
+Comment.belongsTo(User, { foreignKey: 'creator_id' });
 
 // Routes
 app.use('/', home);

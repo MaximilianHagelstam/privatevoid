@@ -47,7 +47,6 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
                 icon={<FiMessageCircle />}
               />
             </HStack>
-            '
           </Stack>
         </Stack>
       </Box>

@@ -1,6 +1,7 @@
 const logger = require('../config/logger');
 const Post = require('../models/Post');
 const User = require('../models/User');
+const Comment = require('../models/Comment');
 
 const createPost = async (req) => {
   try {
@@ -44,4 +45,21 @@ const sendCurrentUser = (req, res) => {
   res.json(user);
 };
 
-module.exports = { createPost, readPosts, sendCurrentUser };
+const createComment = async (req) => {
+  try {
+    const newComment = {
+      body: req.body.body,
+      post_id: req.body.postId,
+      creator_id: req.user.id,
+    };
+
+    const comment = await Comment.create(newComment);
+
+    logger.debug(JSON.stringify(comment));
+    logger.info('Comment created');
+  } catch (err) {
+    logger.error(`Error creating comment: ${err}`);
+  }
+};
+
+module.exports = { createPost, readPosts, sendCurrentUser, createComment };

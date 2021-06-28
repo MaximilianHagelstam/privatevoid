@@ -13,6 +13,18 @@ export const createPost = (data) =>
     body: JSON.stringify(data),
   });
 
+export const createComment = (data) =>
+  fetch('http://localhost:8080/api/create-comment', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data),
+  });
+
 export const fetchUser = () => {
   const user = fetch('http://localhost:8080/api/current-user', {
     method: 'GET',
