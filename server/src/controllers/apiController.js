@@ -62,4 +62,24 @@ const createComment = async (req) => {
   }
 };
 
-module.exports = { createPost, readPosts, sendCurrentUser, createComment };
+const readCommentById = async (req, res) => {
+  try {
+    const commentId = Number(req.params.commentId);
+    const comment = await Comment.findByPk(commentId);
+
+    res.json(comment);
+
+    logger.debug(JSON.stringify(comment));
+    logger.info('Comment read');
+  } catch (err) {
+    logger.error(`Error reading comment: ${err}`);
+  }
+};
+
+module.exports = {
+  createPost,
+  readPosts,
+  sendCurrentUser,
+  createComment,
+  readCommentById,
+};
