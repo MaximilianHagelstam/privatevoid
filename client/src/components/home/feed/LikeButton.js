@@ -6,7 +6,7 @@ export const LikeButton = () => {
     <IconButton
       variant="ghost"
       rounded={'full'}
-      colorScheme="blue"
+      colorScheme="red"
       aria-label="Like"
       icon={<FiHeart />}
     />

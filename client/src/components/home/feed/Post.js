@@ -18,9 +18,9 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
               </Text>
             </Heading>
             <Text fontSize="lg">{message}</Text>
-            <HStack spacing="14px" paddingTop="6px">
-              <LikeButton />
+            <HStack spacing="24px" paddingTop="6px">
               <CommentButton />
+              <LikeButton />
             </HStack>
           </Stack>
         </Stack>
