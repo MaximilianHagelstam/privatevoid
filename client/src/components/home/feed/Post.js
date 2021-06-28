@@ -7,14 +7,7 @@ import { LikeButton } from './LikeButton';
 export const Post = ({ message, username, displayName, date, avatar }) => {
   return (
     <div className="post">
-      <Box
-        maxW={'2xl'}
-        w={'full'}
-        boxShadow="md"
-        rounded={'3xl'}
-        p={6}
-        overflow={'hidden'}
-      >
+      <Box maxW={'2xl'} w={'full'} rounded={'3xl'} p={6} overflow={'hidden'}>
         <Stack direction={'row'} spacing={4}>
           <Avatar src={avatar} alt={'Author'} size="md" />
           <Stack direction={'column'} spacing={0}>
