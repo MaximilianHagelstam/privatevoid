@@ -17,3 +17,12 @@ CREATE TABLE posts (
     "updatedAt" date NOT NULL,
     author_id int REFERENCES users(id) NOT NULL
 );
+
+CREATE TABLE comments (
+    id serial PRIMARY KEY,
+    body text NOT NULL,
+    "createdAt" date NOT NULL,
+    "updatedAt" date NOT NULL,
+    post_id int REFERENCES posts(id) NOT NULL,
+    creator_id int REFERENCES users(id) NOT NULL
+);

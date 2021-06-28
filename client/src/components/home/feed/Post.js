@@ -4,7 +4,14 @@ import './Post.css';
 import { CommentButton } from './CommentButton';
 import { LikeButton } from './LikeButton';
 
-export const Post = ({ message, username, displayName, date, avatar }) => {
+export const Post = ({
+  message,
+  username,
+  displayName,
+  date,
+  avatar,
+  postId,
+}) => {
   return (
     <div className="post">
       <Box maxW={'2xl'} w={'full'} rounded={'3xl'} p={6} overflow={'hidden'}>
@@ -19,7 +26,7 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
             </Heading>
             <Text fontSize="lg">{message}</Text>
             <HStack spacing="24px" paddingTop="6px">
-              <CommentButton />
+              <CommentButton postId={postId} />
               <LikeButton />
             </HStack>
           </Stack>

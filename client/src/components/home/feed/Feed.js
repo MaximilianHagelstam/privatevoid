@@ -20,6 +20,7 @@ export const Feed = () => {
       {posts.map((post) => (
         <Post
           key={post.id}
+          postId={post.id}
           message={post.message}
           username={post.user.username}
           date={post.createdAt}
