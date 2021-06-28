@@ -1,5 +1,14 @@
-import { Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
+import {
+  Stack,
+  Avatar,
+  Text,
+  Box,
+  Heading,
+  HStack,
+  IconButton,
+} from '@chakra-ui/react';
 import './Post.css';
+import { FiHeart, FiMessageCircle } from 'react-icons/fi';
 
 export const Post = ({ message, username, displayName, date, avatar }) => {
   return (
@@ -21,8 +30,24 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
                 @{username} · {date}
               </Text>
             </Heading>
-
             <Text fontSize="lg">{message}</Text>
+            <HStack spacing="14px" paddingTop="6px">
+              <IconButton
+                variant="ghost"
+                rounded={'full'}
+                colorScheme="purple"
+                aria-label="Like"
+                icon={<FiHeart />}
+              />
+              <IconButton
+                variant="ghost"
+                rounded={'full'}
+                colorScheme="purple"
+                aria-label="Comment"
+                icon={<FiMessageCircle />}
+              />
+            </HStack>
+            '
           </Stack>
         </Stack>
       </Box>
