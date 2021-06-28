@@ -62,17 +62,17 @@ const createComment = async (req) => {
   }
 };
 
-const readCommentById = async (req, res) => {
+const readPostById = async (req, res) => {
   try {
-    const commentId = Number(req.params.commentId);
-    const comment = await Comment.findByPk(commentId);
+    const postId = Number(req.params.postId);
+    const post = await Post.findByPk(postId);
 
-    res.json(comment);
+    res.json(post);
 
-    logger.debug(JSON.stringify(comment));
-    logger.info('Comment read');
+    logger.debug(JSON.stringify(post));
+    logger.info('Post read');
   } catch (err) {
-    logger.error(`Error reading comment: ${err}`);
+    logger.error(`Error reading post: ${err}`);
   }
 };
 
@@ -81,5 +81,5 @@ module.exports = {
   readPosts,
   sendCurrentUser,
   createComment,
-  readCommentById,
+  readPostById,
 };

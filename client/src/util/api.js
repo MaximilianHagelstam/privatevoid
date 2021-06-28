@@ -27,8 +27,8 @@ export const createComment = (data) =>
     body: JSON.stringify(data),
   });
 
-export const fetchUser = () => {
-  const user = fetch(`${REACT_APP_API_HOME}/api/current-user`, {
+export const fetchUser = () =>
+  fetch(`${REACT_APP_API_HOME}/api/current-user`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -38,5 +38,7 @@ export const fetchUser = () => {
     },
   });
 
-  return user;
-};
+export const fetchCommentById = (commentId) =>
+  fetch(`${REACT_APP_API_HOME}/api/read-comment-by-id/${commentId}`).then(
+    (res) => res.json()
+  );
