@@ -45,7 +45,7 @@ export const Landing = () => {
           lineHeight={'110%'}
         >
           Welcome to{' '}
-          <Text as={'span'} color={'purple.500'}>
+          <Text as={'span'} color={'blue.400'}>
             PrivateVoid
           </Text>
         </Heading>
@@ -57,7 +57,7 @@ export const Landing = () => {
         </Text>
         <Stack spacing={6} direction={'row'}>
           <Link to="/login">
-            <Button rounded={'full'} px={6} colorScheme={'purple'}>
+            <Button rounded={'full'} px={6} colorScheme={'blue'}>
               Get started
             </Button>
           </Link>

@@ -33,7 +33,7 @@ export const Logout = () => {
             <Button
               rounded={'full'}
               px={6}
-              colorScheme={'purple'}
+              colorScheme={'blue'}
               onClick={handleLogoutClick}
             >
               Log out

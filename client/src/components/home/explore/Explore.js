@@ -7,7 +7,6 @@ export const Explore = () => {
     <div className="explore">
       <div className="explore__input">
         <Input
-          focusBorderColor="purple.200"
           rounded={'full'}
           size="lg"
           type="text"

@@ -17,7 +17,7 @@ export const Login = () => {
           <Box my={4} textAlign="left">
             <Button
               onClick={handleSignInClick}
-              colorScheme="purple"
+              colorScheme="blue"
               size="lg"
               leftIcon={<FaGithub />}
               width="full"

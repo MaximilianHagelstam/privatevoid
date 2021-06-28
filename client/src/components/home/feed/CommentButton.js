@@ -36,7 +36,7 @@ export const CommentButton = () => {
       <IconButton
         variant="ghost"
         rounded={'full'}
-        colorScheme="purple"
+        colorScheme="blue"
         aria-label="Comment"
         onClick={onOpen}
         icon={<FiMessageCircle />}
@@ -47,7 +47,7 @@ export const CommentButton = () => {
         <ModalContent>
           <form onSubmit={onSubmit}>
             <ModalHeader>Comment</ModalHeader>
-            <ModalCloseButton rounded={'full'} colorScheme="purple" />
+            <ModalCloseButton rounded={'full'} colorScheme="blue" />
             <ModalBody pb={6}>
               <FormControl>
                 <Textarea
@@ -65,7 +65,7 @@ export const CommentButton = () => {
 
             <ModalFooter>
               <Button
-                colorScheme="purple"
+                colorScheme="blue"
                 mr={3}
                 type="submit"
                 rounded={'full'}

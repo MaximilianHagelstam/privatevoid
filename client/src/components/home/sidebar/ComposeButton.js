@@ -34,7 +34,7 @@ export const ComposeButton = () => {
       <Button
         rounded={'full'}
         px={6}
-        colorScheme="purple"
+        colorScheme="blue"
         onClick={onOpen}
         marginTop="24px"
       >
@@ -46,7 +46,7 @@ export const ComposeButton = () => {
         <ModalContent>
           <form onSubmit={onSubmit}>
             <ModalHeader>Compose a post</ModalHeader>
-            <ModalCloseButton rounded={'full'} colorScheme="purple" />
+            <ModalCloseButton rounded={'full'} colorScheme="blue" />
             <ModalBody pb={6}>
               <FormControl>
                 <Textarea
@@ -64,7 +64,7 @@ export const ComposeButton = () => {
 
             <ModalFooter>
               <Button
-                colorScheme="purple"
+                colorScheme="blue"
                 mr={3}
                 type="submit"
                 rounded={'full'}
