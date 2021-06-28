@@ -11,7 +11,8 @@ export const Logout = () => {
     <div className="logout">
       <Box
         borderRadius="2xl"
-        borderWidth="1px"
+        // borderWidth="1px"
+        boxShadow="2xl"
         alignItems="center"
         padding="50px"
       >
