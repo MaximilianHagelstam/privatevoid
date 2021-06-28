@@ -18,7 +18,6 @@ import React, { useState } from 'react';
 import { createComment } from '../../../util/api';
 
 export const CommentButton = ({ postId }) => {
-  console.log(postId);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [comment, setComment] = useState('');
 
