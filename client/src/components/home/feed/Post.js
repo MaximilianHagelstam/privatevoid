@@ -1,14 +1,8 @@
-import {
-  Stack,
-  Avatar,
-  Text,
-  Box,
-  Heading,
-  HStack,
-  IconButton,
-} from '@chakra-ui/react';
+import { Stack, Avatar, Text, Box, Heading, HStack } from '@chakra-ui/react';
 import './Post.css';
-import { FiHeart, FiMessageCircle } from 'react-icons/fi';
+
+import { CommentButton } from './CommentButton';
+import { LikeButton } from './LikeButton';
 
 export const Post = ({ message, username, displayName, date, avatar }) => {
   return (
@@ -32,20 +26,8 @@ export const Post = ({ message, username, displayName, date, avatar }) => {
             </Heading>
             <Text fontSize="lg">{message}</Text>
             <HStack spacing="14px" paddingTop="6px">
-              <IconButton
-                variant="ghost"
-                rounded={'full'}
-                colorScheme="purple"
-                aria-label="Like"
-                icon={<FiHeart />}
-              />
-              <IconButton
-                variant="ghost"
-                rounded={'full'}
-                colorScheme="purple"
-                aria-label="Comment"
-                icon={<FiMessageCircle />}
-              />
+              <LikeButton />
+              <CommentButton />
             </HStack>
           </Stack>
         </Stack>
