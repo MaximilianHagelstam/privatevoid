@@ -2,8 +2,8 @@
   flex: 0.4;
   min-width: fit-content;
   overflow-y: scroll;
-  border-right-width: 1px;
-  border-left-width: 1px;
+  /* border-right-width: 1px; */
+  /* border-left-width: 1px; */
 }
 
 .main::-webkit-scrollbar {
