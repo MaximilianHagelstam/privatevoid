@@ -120,13 +120,6 @@ const readPostsByUsername = async (req, res) => {
       ],
     });
 
-    if (posts.length === 0) {
-      res.status(404).json({ message: 'User has no posts' });
-      logger.info('User has no posts');
-    } else {
-      logger.info('Posts read');
-    }
-
     res.json(posts);
 
     logger.debug(JSON.stringify(posts));
@@ -134,6 +127,16 @@ const readPostsByUsername = async (req, res) => {
   } catch (err) {
     logger.error(`Error reading posts: ${err}`);
   }
+};
+
+const findUserIdFromUsername = async (req, res) => {
+  const { username } = req.params;
+
+  const user = await User.findOne({
+    where: { username },
+  });
+
+  res.json({ authorId: user.id });
 };
 
 module.exports = {
@@ -144,4 +147,5 @@ module.exports = {
   readPostById,
   readUserByUsername,
   readPostsByUsername,
+  findUserIdFromUsername,
 };

@@ -43,7 +43,7 @@ export const User = ({ searchedUsername }) => {
             displayName={displayName}
             bio={bio}
           />
-          <UserTabs />
+          <UserTabs username={username} />
         </div>
       )}
     </div>
