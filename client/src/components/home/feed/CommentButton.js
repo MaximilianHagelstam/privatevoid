@@ -16,6 +16,7 @@ import { FiMessageCircle } from 'react-icons/fi';
 import React, { useState } from 'react';
 
 import { createComment } from '../../../util/api';
+import { CommentPost } from './CommentPost';
 
 export const CommentButton = ({ postId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,6 +46,8 @@ export const CommentButton = ({ postId }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
+          <CommentPost postId={postId} />
+
           <form onSubmit={onSubmit}>
             <ModalHeader>Comment</ModalHeader>
             <ModalCloseButton rounded={'full'} colorScheme="blue" />

@@ -38,7 +38,7 @@ export const fetchUser = () =>
     },
   });
 
-export const fetchCommentById = (commentId) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-comment-by-id/${commentId}`).then(
-    (res) => res.json()
+export const fetchPostById = (postId) =>
+  fetch(`${REACT_APP_API_HOME}/api/read-post-by-id/${postId}`).then((res) =>
+    res.json()
   );
