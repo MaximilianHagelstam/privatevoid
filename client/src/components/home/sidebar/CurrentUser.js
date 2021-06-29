@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Flex, Avatar, Heading, Text } from '@chakra-ui/react';
-import { fetchUser } from '../../../util/api';
 import './CurrentUser.css';
+
+import { fetchUser } from '../../../util/api';
 
 export const CurrentUser = () => {
   let history = useHistory();

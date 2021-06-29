@@ -1,5 +1,6 @@
-import './Sidebar.css';
+import React from 'react';
 import { FiMail, FiUser, FiSettings, FiLogOut, FiHome } from 'react-icons/fi';
+import './Sidebar.css';
 
 import { NavButton } from './NavButton';
 import { ToggleTheme } from './ToggleTheme';

@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import {
   Flex,
   Container,
@@ -7,11 +8,10 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Illustration } from './Illustration';
 import { fetchUser } from '../../util/api';
+import { Illustration } from './Illustration';
 
 export const Landing = () => {
   let history = useHistory();

@@ -1,3 +1,4 @@
+import React from 'react';
 import { IconButton } from '@chakra-ui/react';
 import { FiHeart } from 'react-icons/fi';
 

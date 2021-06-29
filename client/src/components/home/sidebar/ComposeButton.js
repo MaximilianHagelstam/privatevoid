@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Modal,
   Button,
@@ -11,7 +12,6 @@ import {
   Textarea,
   useDisclosure,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
 
 import { createPost } from '../../../util/api';
 

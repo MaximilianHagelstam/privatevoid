@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack, Avatar, Text, Box, Heading, HStack } from '@chakra-ui/react';
 import './Post.css';
 

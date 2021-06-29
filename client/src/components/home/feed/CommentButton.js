@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   IconButton,
   Modal,
@@ -13,7 +14,6 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { FiMessageCircle } from 'react-icons/fi';
-import React, { useState } from 'react';
 
 import { createComment } from '../../../util/api';
 import { CommentPost } from './CommentPost';

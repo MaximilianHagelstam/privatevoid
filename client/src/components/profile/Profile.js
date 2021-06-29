@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { fetchUser } from '../../util/api';
 
 export const Profile = () => {

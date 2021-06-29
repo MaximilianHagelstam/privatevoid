@@ -1,5 +1,5 @@
-import { Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
+import { Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
 
 import { fetchPostById } from '../../../util/api';
 

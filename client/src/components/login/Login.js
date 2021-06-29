@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Flex, Box, Heading } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import './Login.css';
