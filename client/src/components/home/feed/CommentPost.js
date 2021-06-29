@@ -32,7 +32,6 @@ export const CommentPost = ({ postId }) => {
                 @{postAuthorUsername} · {postDate}
               </Text>
             </Heading>
-
             <Text fontSize="lg">{postMessage}</Text>
           </Stack>
         </Stack>
