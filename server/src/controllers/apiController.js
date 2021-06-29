@@ -65,7 +65,16 @@ const createComment = async (req) => {
 const readPostById = async (req, res) => {
   try {
     const postId = Number(req.params.postId);
-    const post = await Post.findByPk(postId);
+    // const post = await Post.findByPk(postId);
+
+    const post = await Post.findByPk(postId, {
+      include: [
+        {
+          model: User,
+          required: true,
+        },
+      ],
+    });
 
     res.json(post);
 
