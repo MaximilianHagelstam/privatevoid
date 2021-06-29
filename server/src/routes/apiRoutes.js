@@ -9,5 +9,9 @@ router.get('/read-posts', apiController.readPosts);
 router.get('/current-user', authCheck, apiController.sendCurrentUser);
 router.post('/create-comment', apiController.createComment);
 router.get('/read-post-by-id/:postId', apiController.readPostById);
+router.get(
+  '/read-user-by-username/:username',
+  apiController.readUserByUsername
+);
 
 module.exports = router;

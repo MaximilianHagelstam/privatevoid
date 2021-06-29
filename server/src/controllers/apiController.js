@@ -84,10 +84,26 @@ const readPostById = async (req, res) => {
   }
 };
 
+const readUserByUsername = async (req, res) => {
+  try {
+    const { username } = req.params;
+
+    const user = await User.findOne({ where: { username } });
+
+    res.json(user);
+
+    logger.debug(JSON.stringify(user));
+    logger.info('User found');
+  } catch (err) {
+    logger.error(`Error finding user: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
   sendCurrentUser,
   createComment,
   readPostById,
+  readUserByUsername,
 };
