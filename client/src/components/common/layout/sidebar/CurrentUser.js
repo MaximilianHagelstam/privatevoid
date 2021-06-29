@@ -1,42 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import { Flex, Avatar, Heading, Text } from '@chakra-ui/react';
 import './CurrentUser.css';
 
-import { fetchUser } from '../../../util/api';
-
-export const CurrentUser = () => {
-  let history = useHistory();
-
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    fetchUser()
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          history.push('/login');
-        }
-      })
-      .then((resJson) => {
-        if (resJson) {
-          setUser(resJson);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [history]);
-
+export const CurrentUser = ({ avatar, displayName, username }) => {
   return (
     <div className="currentUser">
-      <Avatar size="md" src={user.image_url} />
+      <Avatar size="md" src={avatar} />
       <Flex flexDir="column" padding="10px">
         <Heading as="h3" size="sm">
-          {user.display_name}
+          {displayName}
         </Heading>
-        <Text color="gray">@{user.username}</Text>
+        <Text color="gray">@{username}</Text>
       </Flex>
     </div>
   );
