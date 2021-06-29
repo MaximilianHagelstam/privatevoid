@@ -106,6 +106,36 @@ const readUserByUsername = async (req, res) => {
   }
 };
 
+const readPostsByUsername = async (req, res) => {
+  try {
+    const { authorId } = req.params;
+
+    const posts = await Post.findAll({
+      where: { author_id: authorId },
+      include: [
+        {
+          model: User,
+          required: true,
+        },
+      ],
+    });
+
+    if (posts.length === 0) {
+      res.status(404).json({ message: 'User has no posts' });
+      logger.info('User has no posts');
+    } else {
+      logger.info('Posts read');
+    }
+
+    res.json(posts);
+
+    logger.debug(JSON.stringify(posts));
+    logger.info('Posts read');
+  } catch (err) {
+    logger.error(`Error reading posts: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -113,4 +143,5 @@ module.exports = {
   createComment,
   readPostById,
   readUserByUsername,
+  readPostsByUsername,
 };

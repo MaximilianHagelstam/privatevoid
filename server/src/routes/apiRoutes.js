@@ -13,5 +13,9 @@ router.get(
   '/read-user-by-username/:searchedUsername',
   apiController.readUserByUsername
 );
+router.get(
+  '/read-posts-by-authorId/:authorId',
+  apiController.readPostsByUsername
+);
 
 module.exports = router;
