@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchPostsByAuthorId, convertUsernameToId } from '../../util/api';
+import { Post } from '../feed/Post';
 
 export const PostsTab = ({ authorUsername }) => {
   const [posts, setPosts] = useState([]);
@@ -19,11 +20,16 @@ export const PostsTab = ({ authorUsername }) => {
   return (
     <div>
       {posts.map((post) => (
-        <div key={post.id}>
-          <p>{post.message}</p>
-        </div>
+        <Post
+          key={post.id}
+          postId={post.id}
+          message={post.message}
+          username={post.user.username}
+          date={post.createdAt}
+          displayName={post.user.display_name}
+          avatar={post.user.image_url}
+        />
       ))}
-      <p>penis</p>
     </div>
   );
 };

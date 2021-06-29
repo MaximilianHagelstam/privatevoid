@@ -5,7 +5,7 @@ import { PostsTab } from './PostsTab';
 
 export const UserTabs = ({ username }) => {
   return (
-    <Box maxW={'xl'} w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
+    <Box maxW={'xl'} w={'full'} p={6} overflow={'hidden'}>
       <Tabs size="lg" isFitted>
         <TabList>
           <Tab>Posts</Tab>
