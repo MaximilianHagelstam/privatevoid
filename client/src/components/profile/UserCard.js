@@ -6,18 +6,17 @@ export const UserCard = ({ avatar, displayName, username, bio }) => {
     <Box maxW={'xl'} w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
       <Avatar
         size={'2xl'}
-        src={'https://avatars.githubusercontent.com/u/49094247?v=4'}
+        src={avatar}
         alt={'Profile'}
         mb={4}
         pos={'relative'}
       />
-      <Heading fontSize={'2xl'}>Lindsey James</Heading>
+      <Heading fontSize={'2xl'}>{displayName}</Heading>
       <Text fontWeight={600} color={'gray.500'} mb={4}>
         @{username}
       </Text>
       <Text textAlign={'center'} px={14}>
-        Actress, musician, songwriter and artist. PM for work inquires or me in
-        your posts
+        {bio}
       </Text>
 
       <Stack mt={8} direction={'row'} spacing={6}>

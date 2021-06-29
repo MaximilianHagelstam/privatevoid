@@ -15,7 +15,7 @@ export const AppRouter = () => {
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
       <Route path="/logout" component={Logout} />
-      <Route path="/user/:username" component={Profile} />
+      <Route path="/user/:searchedUsername" component={Profile} />
     </Switch>
   );
 };

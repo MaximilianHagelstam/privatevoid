@@ -10,7 +10,7 @@ router.get('/current-user', authCheck, apiController.sendCurrentUser);
 router.post('/create-comment', apiController.createComment);
 router.get('/read-post-by-id/:postId', apiController.readPostById);
 router.get(
-  '/read-user-by-username/:username',
+  '/read-user-by-username/:searchedUsername',
   apiController.readUserByUsername
 );
 

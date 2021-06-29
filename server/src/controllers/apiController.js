@@ -86,14 +86,21 @@ const readPostById = async (req, res) => {
 
 const readUserByUsername = async (req, res) => {
   try {
-    const { username } = req.params;
+    const { searchedUsername } = req.params;
 
-    const user = await User.findOne({ where: { username } });
-
-    res.json(user);
+    const user = await User.findOne({ where: { username: searchedUsername } });
 
     logger.debug(JSON.stringify(user));
-    logger.info('User found');
+
+    if (user === null) {
+      res.status(404).json({ message: 'User not found' });
+
+      logger.info('User not found');
+    } else {
+      res.json(user);
+
+      logger.info('User found');
+    }
   } catch (err) {
     logger.error(`Error finding user: ${err}`);
   }

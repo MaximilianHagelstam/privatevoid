@@ -43,7 +43,13 @@ export const fetchPostById = (postId) =>
     res.json()
   );
 
-export const fetchUserByUsername = (username) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-user-by-username/${username}`).then(
-    (res) => res.json()
-  );
+export const fetchUserByUsername = (searchedUsername) =>
+  fetch(
+    `${REACT_APP_API_HOME}/api/read-user-by-username/${searchedUsername}`
+  ).then((res) => {
+    if (res.status === 200) {
+      return res.json();
+    } else {
+      return false;
+    }
+  });
