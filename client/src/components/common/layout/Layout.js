@@ -1,15 +1,14 @@
 import React from 'react';
-import './Home.css';
+import './Layout.css';
 
 import { Sidebar } from './sidebar/Sidebar';
-import { Feed } from './feed/Feed';
 import { Explore } from './explore/Explore';
 
-export const Home = () => {
+export const Layout = ({ main }) => {
   return (
-    <div className="home">
+    <div className="layout">
       <Sidebar />
-      <Feed />
+      {main}
       <Explore />
     </div>
   );

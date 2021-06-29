@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  IconButton,
   Modal,
   Button,
   ModalOverlay,
@@ -12,51 +13,54 @@ import {
   Textarea,
   useDisclosure,
 } from '@chakra-ui/react';
+import { FiMessageCircle } from 'react-icons/fi';
 
-import { createPost } from '../../../util/api';
+import { createComment } from '../../util/api';
+import { CommentPost } from './CommentPost';
 
-export const ComposeButton = () => {
+export const CommentButton = ({ postId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [message, setMessage] = useState('');
+  const [comment, setComment] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createPost({ message });
-    setMessage('');
+    createComment({ body: comment, postId: postId });
+    setComment('');
   };
 
   const onChange = (e) => {
-    setMessage(e.target.value);
+    setComment(e.target.value);
   };
 
   return (
     <div>
-      <Button
+      <IconButton
+        variant="ghost"
         rounded={'full'}
-        px={6}
         colorScheme="blue"
+        aria-label="Comment"
         onClick={onOpen}
-        marginTop="24px"
-      >
-        Compose
-      </Button>
+        icon={<FiMessageCircle />}
+      />
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
+          <CommentPost postId={postId} />
+
           <form onSubmit={onSubmit}>
-            <ModalHeader>Compose a post</ModalHeader>
+            <ModalHeader>Comment</ModalHeader>
             <ModalCloseButton rounded={'full'} colorScheme="blue" />
             <ModalBody pb={6}>
               <FormControl>
                 <Textarea
-                  placeholder="What's happening?"
+                  placeholder="Write your comment"
                   size="lg"
                   resize="none"
                   isRequired={true}
                   type="text"
-                  name="message"
-                  value={message}
+                  name="comment"
+                  value={comment}
                   onChange={onChange}
                 />
               </FormControl>
@@ -70,7 +74,7 @@ export const ComposeButton = () => {
                 rounded={'full'}
                 onClick={onClose}
               >
-                Publish
+                Comment
               </Button>
             </ModalFooter>
           </form>

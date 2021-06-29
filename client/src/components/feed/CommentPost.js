@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
 
-import { fetchPostById } from '../../../util/api';
+import { fetchPostById } from '../../util/api';
 
 export const CommentPost = ({ postId }) => {
   const [postMessage, setPostMessage] = useState('');

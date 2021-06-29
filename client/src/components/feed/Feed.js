@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Feed.css';
 
-import { getPosts } from '../../../util/api';
+import { getPosts } from '../../util/api';
 import { Post } from './Post';
 
 export const Feed = () => {
