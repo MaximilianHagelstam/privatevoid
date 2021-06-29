@@ -42,3 +42,8 @@ export const fetchPostById = (postId) =>
   fetch(`${REACT_APP_API_HOME}/api/read-post-by-id/${postId}`).then((res) =>
     res.json()
   );
+
+export const fetchUserByUsername = (username) =>
+  fetch(`${REACT_APP_API_HOME}/api/read-user-by-username/${username}`).then(
+    (res) => res.json()
+  );
