@@ -1,4 +1,4 @@
-.feed {
+.main {
   flex: 0.4;
   min-width: fit-content;
   overflow-y: scroll;
@@ -6,6 +6,6 @@
   border-left-width: 1px;
 }
 
-.feed::-webkit-scrollbar {
+.main::-webkit-scrollbar {
   display: none;
 }

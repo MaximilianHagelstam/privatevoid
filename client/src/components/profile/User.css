@@ -1,0 +1,6 @@
+.user {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 10px;
+  border-bottom-width: 1px;
+}
