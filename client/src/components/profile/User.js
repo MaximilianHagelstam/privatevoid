@@ -1,19 +1,8 @@
 import React from 'react';
-import {
-  Heading,
-  Avatar,
-  Box,
-  Text,
-  Stack,
-  Button,
-  Link,
-  Badge,
-  useColorModeValue,
-  HStack,
-} from '@chakra-ui/react';
+import { Heading, Avatar, Box, Text, Stack, Button } from '@chakra-ui/react';
 import './User.css';
 
-export const User = () => {
+export const User = ({ username }) => {
   return (
     <div className="user">
       <Box
@@ -32,13 +21,9 @@ export const User = () => {
         />
         <Heading fontSize={'2xl'}>Lindsey James</Heading>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          @lindsey_jam3s
+          @{username}
         </Text>
-        <Text
-          textAlign={'center'}
-          color={useColorModeValue('gray.700', 'gray.400')}
-          px={14}
-        >
+        <Text textAlign={'center'} px={14}>
           Actress, musician, songwriter and artist. PM for work inquires or me
           in your posts
         </Text>

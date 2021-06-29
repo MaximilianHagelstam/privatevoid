@@ -12,7 +12,11 @@ export const Sidebar = () => {
       <ToggleTheme />
       <NavButton text="Home" link="/home" icon={<FiHome />} />
       <NavButton text="Messages" link="/messages" icon={<FiMail />} />
-      <NavButton text="Profile" link="/user" icon={<FiUser />} />
+      <NavButton
+        text="Profile"
+        link="/user/MaximilianHagelstam"
+        icon={<FiUser />}
+      />
       <NavButton text="Settings" link="/settings" icon={<FiSettings />} />
       <NavButton text="Log out" link="/logout" icon={<FiLogOut />} />
       <ComposeButton />
