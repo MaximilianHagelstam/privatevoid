@@ -4,6 +4,7 @@ import './User.css';
 import { fetchUserByUsername } from '../../util/api';
 import { UserCard } from './UserCard';
 import { UserNotFound } from './UserNotFound';
+import { UserTabs } from './UserTabs';
 
 export const User = ({ searchedUsername }) => {
   const [userFound, setUserFound] = useState(false);
@@ -35,12 +36,15 @@ export const User = ({ searchedUsername }) => {
       {!userFound ? (
         <UserNotFound />
       ) : (
-        <UserCard
-          username={username}
-          avatar={avatar}
-          displayName={displayName}
-          bio={bio}
-        />
+        <div>
+          <UserCard
+            username={username}
+            avatar={avatar}
+            displayName={displayName}
+            bio={bio}
+          />
+          <UserTabs />
+        </div>
       )}
     </div>
   );
