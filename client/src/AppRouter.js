@@ -6,6 +6,7 @@ import { Home } from './components/feed/Home';
 import { Login } from './components/login/Login';
 import { Logout } from './components/logout/Logout';
 import { Profile } from './components/profile/Profile';
+import { PostLayout } from './components/post/PostLayout';
 
 export const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
       <Route path="/logout" component={Logout} />
       <Route path="/logout" component={Logout} />
       <Route path="/user/:searchedUsername" component={Profile} />
+      <Route path="/post/:postId" component={PostLayout} />
     </Switch>
   );
 };
