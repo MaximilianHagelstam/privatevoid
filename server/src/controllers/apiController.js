@@ -72,6 +72,10 @@ const readPostById = async (req, res) => {
           model: User,
           required: true,
         },
+        {
+          model: Comment,
+          required: false,
+        },
       ],
     });
 
