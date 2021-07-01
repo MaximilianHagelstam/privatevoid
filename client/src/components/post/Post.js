@@ -24,15 +24,15 @@ export const Post = ({ postId }) => {
     <div className="post">
       <Box maxW={'2xl'} w={'full'} rounded={'3xl'} p={6} overflow={'hidden'}>
         <Stack direction={'row'} spacing={4}>
-          <Avatar src={postAuthorImage} alt={'Author'} size="md" />
+          <Avatar src={postAuthorImage} alt={'Author'} size="lg" />
           <Stack direction={'column'} spacing={0}>
-            <Heading as="h3" size="sm">
+            <Heading as="h3" size="md">
               {postAuthorDisplayName}{' '}
               <Text as={'span'} color="gray" fontWeight="400">
                 @{postAuthorUsername} · {postDate}
               </Text>
             </Heading>
-            <Text fontSize="lg">{postMessage}</Text>
+            <Text fontSize="xl">{postMessage}</Text>
           </Stack>
         </Stack>
       </Box>
