@@ -1,5 +1,3 @@
-CREATE DATABSE privatevoid;
-
 CREATE TABLE users (
     id int PRIMARY KEY,
     username text UNIQUE NOT NULL,

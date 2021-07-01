@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 
-const { DB_URI } = process.env;
+const { PG_DATABASE, PG_USERNAME, PG_PASSWORD, PG_HOST, PG_PORT } = process.env;
 
-const db = new Sequelize(DB_URI);
+const connectionUri = `postgres://${PG_USERNAME}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DATABASE}`;
+
+const db = new Sequelize(connectionUri);
 
 module.exports = db;
