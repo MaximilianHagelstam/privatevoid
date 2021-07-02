@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { getPosts } from '../../util/api';
-import { Post } from './Post';
+import { Post } from '../common/post/index';
 
 export const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -18,9 +18,8 @@ export const Feed = () => {
   return (
     <div>
       {posts.map((post) => (
-        <Link to={`/post/${post.id}`}>
+        <Link to={`/post/${post.id}`} key={post.id}>
           <Post
-            key={post.id}
             postId={post.id}
             message={post.message}
             username={post.user.username}

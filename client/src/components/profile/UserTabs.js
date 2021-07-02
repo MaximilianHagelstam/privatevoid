@@ -9,6 +9,7 @@ export const UserTabs = ({ username }) => {
       <Tabs size="lg" isFitted>
         <TabList>
           <Tab>Posts</Tab>
+          <Tab>Comments</Tab>
           <Tab>Likes</Tab>
         </TabList>
 
@@ -16,6 +17,7 @@ export const UserTabs = ({ username }) => {
           <TabPanel>
             <PostsTab authorUsername={username} />
           </TabPanel>
+          <TabPanel>Comments</TabPanel>
           <TabPanel>
             <p>Likes</p>
           </TabPanel>

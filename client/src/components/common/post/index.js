@@ -12,24 +12,37 @@ export const Post = ({
   date,
   avatar,
   postId,
+  size,
+  type,
 }) => {
   return (
+    // leftIcon={colorMode === 'light' ? <FiMoon /> : <FiSun />}
+
     <div className="post">
-      <Box maxW={'2xl'} w={'full'} rounded={'3xl'} p={6} overflow={'hidden'}>
+      <Box maxW={'2xl'} w={'full'} rounded={'3xl'} p={4} overflow={'hidden'}>
         <Stack direction={'row'} spacing={4}>
-          <Avatar src={avatar} alt={'Author'} size="md" />
+          <Avatar
+            src={avatar}
+            alt={'Author'}
+            size={size === 'big' ? 'lg' : 'md'}
+          />
           <Stack direction={'column'} spacing={0}>
-            <Heading as="h3" size="sm">
+            <Heading as="h3" size={size === 'big' ? 'md' : 'sm'}>
               {displayName}{' '}
               <Text as={'span'} color="gray" fontWeight="400">
                 @{username} · {date}
               </Text>
             </Heading>
             <Text fontSize="lg">{message}</Text>
-            <HStack spacing="24px" paddingTop="6px">
-              <CommentButton postId={postId} />
-              <LikeButton />
-            </HStack>
+
+            {type === 'comment' ? (
+              <p>penis</p>
+            ) : (
+              <HStack spacing="24px" paddingTop="4px">
+                <CommentButton postId={postId} />
+                <LikeButton />
+              </HStack>
+            )}
           </Stack>
         </Stack>
       </Box>
