@@ -1,6 +1,6 @@
 const { REACT_APP_API_HOME } = process.env;
 
-export const getPosts = () =>
+export const fetchPosts = () =>
   fetch(`${REACT_APP_API_HOME}/api/read-posts`).then((res) => res.json());
 
 export const createPost = (data) =>

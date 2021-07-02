@@ -4,8 +4,8 @@ import './Layout.css';
 import './Main.css';
 import '../post/Post.css';
 
-import { Sidebar } from './sidebar/Sidebar';
-import { Explore } from './explore/Explore';
+import { Sidebar } from './sidebar';
+import { Explore } from './explore';
 
 export const Layout = ({ main, title }) => {
   return (
