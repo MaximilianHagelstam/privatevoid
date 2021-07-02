@@ -16,8 +16,6 @@ export const Post = ({
   type,
 }) => {
   return (
-    // leftIcon={colorMode === 'light' ? <FiMoon /> : <FiSun />}
-
     <div className="post">
       <Box maxW={'md'} w={'full'} rounded={'3xl'} p={4} overflow={'hidden'}>
         <Stack direction={'row'} spacing={4}>
