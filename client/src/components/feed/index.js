@@ -18,16 +18,14 @@ export const Feed = () => {
   return (
     <div>
       {posts.map((post) => (
-        <Link to={`/post/${post.id}`} key={post.id}>
-          <Post
-            postId={post.id}
-            message={post.message}
-            username={post.user.username}
-            date={post.createdAt}
-            displayName={post.user.display_name}
-            avatar={post.user.image_url}
-          />
-        </Link>
+        <Post
+          postId={post.id}
+          message={post.message}
+          username={post.user.username}
+          date={post.createdAt}
+          displayName={post.user.display_name}
+          avatar={post.user.image_url}
+        />
       ))}
     </div>
   );

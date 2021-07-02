@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { fetchPostsByAuthorId, convertUsernameToId } from '../../util/api';
-import { Post } from '../common/post';
+import { fetchPostsByAuthorId, convertUsernameToId } from '../../../util/api';
+import { Post } from '../../common/post';
 
 export const PostsTab = ({ authorUsername }) => {
   const [posts, setPosts] = useState([]);
