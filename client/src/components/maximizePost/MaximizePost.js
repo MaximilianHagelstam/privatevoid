@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Stack, Avatar, Text, Box, Heading } from '@chakra-ui/react';
 
 import { fetchPostById } from '../../util/api';
+import { Post } from '../common/post';
 
-export const CommentPost = ({ postId }) => {
+export const MaximizePost = ({ postId }) => {
   const [postMessage, setPostMessage] = useState('');
   const [postAuthorImage, setPostAuthorImage] = useState('');
   const [postAuthorDisplayName, setPostAuthorDisplayName] = useState('');
   const [postAuthorUsername, setPostAuthorUsername] = useState('');
   const [postDate, setPostDate] = useState('');
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     fetchPostById(postId).then((res) => {
@@ -17,25 +18,33 @@ export const CommentPost = ({ postId }) => {
       setPostAuthorDisplayName(res.user.display_name);
       setPostAuthorUsername(res.user.username);
       setPostDate(res.createdAt);
+      setComments(res.comments);
     });
   }, [postId]);
 
   return (
-    <div className="post">
-      <Box maxW={'2xl'} w={'full'} rounded={'3xl'} p={6} overflow={'hidden'}>
-        <Stack direction={'row'} spacing={4}>
-          <Avatar src={postAuthorImage} alt={'Author'} size="md" />
-          <Stack direction={'column'} spacing={0}>
-            <Heading as="h3" size="sm">
-              {postAuthorDisplayName}{' '}
-              <Text as={'span'} color="gray" fontWeight="400">
-                @{postAuthorUsername} · {postDate}
-              </Text>
-            </Heading>
-            <Text fontSize="lg">{postMessage}</Text>
-          </Stack>
-        </Stack>
-      </Box>
+    <div>
+      <Post
+        message={postMessage}
+        username={postAuthorUsername}
+        displayName={postAuthorDisplayName}
+        date={postDate}
+        avatar={postAuthorImage}
+        postId={postId}
+        size="big"
+      />
+
+      {comments.map((comment) => (
+        <Post
+          key={comments.id}
+          message={comment.body}
+          username={comment.user.username}
+          displayName={comment.user.display_name}
+          date={comment.createdAt}
+          avatar={comment.user.image_url}
+          type="comment"
+        />
+      ))}
     </div>
   );
 };
