@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchPostsByAuthorId, convertUsernameToId } from '../../../util/api';
 import { Post } from '../../common/post/index';
 
-export const PostsTab = ({ authorUsername }) => {
+export const CommentsTab = ({ authorUsername }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

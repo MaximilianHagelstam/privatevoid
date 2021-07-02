@@ -6,7 +6,7 @@ import { Landing } from './components/landing/index';
 import { Feed } from './components/feed/';
 import { Login } from './components/login/';
 import { Logout } from './components/logout/';
-import { Profile } from './components/profile/Profile';
+import { ProfileMatch } from './components/profile/ProfileMatch';
 import { MaximizePostMatch } from './components/maximizePost/MaximizePostMatch';
 
 export const AppRouter = () => {
@@ -20,7 +20,7 @@ export const AppRouter = () => {
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
       <Route path="/logout" component={Logout} />
-      <Route path="/user/:searchedUsername" component={Profile} />
+      <Route path="/user/:searchedUsername" component={ProfileMatch} />
       <Route path="/post/:postId" component={MaximizePostMatch} />
     </Switch>
   );

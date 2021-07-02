@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Avatar, Box, Text, Stack, Button } from '@chakra-ui/react';
 
-export const UserCard = ({ avatar, displayName, username, bio }) => {
+export const ProfileCard = ({ avatar, displayName, username, bio }) => {
   return (
     <Box maxW={'xl'} w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
       <Avatar

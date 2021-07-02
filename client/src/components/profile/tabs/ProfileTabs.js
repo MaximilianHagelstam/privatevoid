@@ -3,7 +3,7 @@ import { Tab, Tabs, TabPanels, TabList, TabPanel, Box } from '@chakra-ui/react';
 
 import { PostsTab } from './PostsTab';
 
-export const UserTabs = ({ username }) => {
+export const ProfileTabs = ({ username }) => {
   return (
     <Box maxW={'xl'} w={'full'} p={6} overflow={'hidden'}>
       <Tabs size="lg" isFitted>
