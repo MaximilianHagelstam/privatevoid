@@ -185,6 +185,19 @@ const readCommentsByCreatorId = async (req, res) => {
   }
 };
 
+const editUserSettings = async (req) => {
+  try {
+    await User.update(
+      { display_name: req.body.displayName, bio: req.body.bio },
+      { where: { id: req.user.id } }
+    );
+
+    logger.info('Settings updated');
+  } catch (err) {
+    logger.error(`Error updating settings: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -195,4 +208,5 @@ module.exports = {
   readPostsByAuthorId,
   findUserIdFromUsername,
   readCommentsByCreatorId,
+  editUserSettings,
 };

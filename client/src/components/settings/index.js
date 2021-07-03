@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import './Settings.css';
 
-import { fetchUser } from '../../util/api';
+import { fetchUser, editSettings } from '../../util/api';
 
 export const Settings = () => {
   const toast = useToast();
@@ -34,7 +34,7 @@ export const Settings = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // createPost({ displayName: displayName bio: bio });
+    editSettings({ displayName: displayName, bio: bio });
 
     toast({
       title: 'Settings saved.',

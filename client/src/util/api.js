@@ -68,3 +68,15 @@ export const fetchCommentsByCreatorId = (creatorId) =>
   fetch(
     `${REACT_APP_API_HOME}/api/read-comments-by-creatorId/${creatorId}`
   ).then((res) => res.json());
+
+export const editSettings = (data) =>
+  fetch(`${REACT_APP_API_HOME}/api/update-settings`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data),
+  });

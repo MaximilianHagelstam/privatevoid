@@ -25,5 +25,6 @@ router.get(
   '/read-comments-by-creatorId/:creatorId',
   apiController.readCommentsByCreatorId
 );
+router.post('/update-settings', authCheck, apiController.editUserSettings);
 
 module.exports = router;
