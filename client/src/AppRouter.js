@@ -8,6 +8,7 @@ import { Login } from './components/login/';
 import { Logout } from './components/logout/';
 import { ProfileMatch } from './components/profile/ProfileMatch';
 import { MaximizePostMatch } from './components/maximizePost/MaximizePostMatch';
+import { Settings } from './components/settings';
 
 export const AppRouter = () => {
   return (
@@ -22,6 +23,10 @@ export const AppRouter = () => {
       <Route path="/logout" component={Logout} />
       <Route path="/user/:searchedUsername" component={ProfileMatch} />
       <Route path="/post/:postId" component={MaximizePostMatch} />
+      <Route
+        path="/settings"
+        component={() => <Layout main={<Settings />} title="Settings" />}
+      />
     </Switch>
   );
 };
