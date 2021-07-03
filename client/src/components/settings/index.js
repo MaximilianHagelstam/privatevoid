@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  useToast,
+} from '@chakra-ui/react';
 import './Settings.css';
 
 import { fetchUser } from '../../util/api';
 
 export const Settings = () => {
+  const toast = useToast();
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
   const [user, setUser] = useState({});
@@ -25,14 +32,17 @@ export const Settings = () => {
   }, []);
 
   const onSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     // createPost({ displayName: displayName bio: bio });
 
-    // setDisplayName('');
-    // setBio('');
-
-    alert(`Display Name: ${displayName} Bio: ${bio}`);
+    toast({
+      title: 'Settings saved.',
+      description: `Your new display name is '${displayName}' and your new bio is '${bio}'`,
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   return (
