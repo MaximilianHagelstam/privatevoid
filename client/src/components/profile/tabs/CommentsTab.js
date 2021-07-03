@@ -22,17 +22,30 @@ export const CommentsTab = ({ authorUsername }) => {
 
   return (
     <div>
-      {comments.map((comment) => (
-        <Post
-          key={comment.id}
-          postId={comment.id}
-          message={comment.body}
-          username={comment.user.username}
-          date={comment.createdAt}
-          displayName={comment.user.display_name}
-          avatar={comment.user.image_url}
-          type="comment"
-        />
+      {comments.map((comment, index) => (
+        <div>
+          <Post
+            key={index}
+            postId={comment.post.id}
+            message={comment.post.message}
+            username={comment.post.user.username}
+            date={comment.post.createdAt}
+            displayName={comment.post.user.display_name}
+            avatar={comment.post.user.image_url}
+            size="big"
+          />
+
+          <Post
+            key={comment.id}
+            postId={comment.id}
+            message={comment.body}
+            username={comment.user.username}
+            date={comment.createdAt}
+            displayName={comment.user.display_name}
+            avatar={comment.user.image_url}
+            type="comment"
+          />
+        </div>
       ))}
     </div>
   );

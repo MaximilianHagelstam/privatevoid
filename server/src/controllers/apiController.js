@@ -79,7 +79,7 @@ const readPostById = async (req, res) => {
           include: [
             {
               model: User,
-              // required: true,
+              required: true,
             },
           ],
         },
@@ -161,6 +161,12 @@ const readCommentsByCreatorId = async (req, res) => {
         {
           model: Post,
           required: true,
+          include: [
+            {
+              model: User,
+              required: true,
+            },
+          ],
         },
         {
           model: User,
