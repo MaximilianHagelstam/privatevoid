@@ -6,7 +6,7 @@ import { CommentsTab } from './CommentsTab';
 
 export const ProfileTabs = ({ username }) => {
   return (
-    <Box maxW={'xl'} w={'full'} p={6} overflow={'hidden'}>
+    <Box w={'full'} overflow={'hidden'}>
       <Tabs size="lg" isFitted>
         <TabList>
           <Tab>Posts</Tab>

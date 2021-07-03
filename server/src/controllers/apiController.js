@@ -28,6 +28,7 @@ const readPosts = async (req, res) => {
           required: true,
         },
       ],
+      order: [['createdAt', 'DESC']],
     });
 
     logger.debug(JSON.stringify(posts));
@@ -128,6 +129,7 @@ const readPostsByAuthorId = async (req, res) => {
           required: true,
         },
       ],
+      order: [['createdAt', 'DESC']],
     });
 
     res.json(posts);
@@ -160,7 +162,12 @@ const readCommentsByCreatorId = async (req, res) => {
           model: Post,
           required: true,
         },
+        {
+          model: User,
+          required: true,
+        },
       ],
+      order: [['createdAt', 'DESC']],
     });
 
     res.json(comments);

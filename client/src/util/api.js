@@ -63,3 +63,8 @@ export const convertUsernameToId = (username) =>
   fetch(`${REACT_APP_API_HOME}/api/find-userId-from-username/${username}`).then(
     (res) => res.json()
   );
+
+export const fetchCommentsByCreatorId = (creatorId) =>
+  fetch(
+    `${REACT_APP_API_HOME}/api/read-comments-by-creatorId/${creatorId}`
+  ).then((res) => res.json());

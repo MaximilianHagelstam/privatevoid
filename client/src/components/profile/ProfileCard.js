@@ -3,7 +3,7 @@ import { Heading, Avatar, Box, Text, Stack, Button } from '@chakra-ui/react';
 
 export const ProfileCard = ({ avatar, displayName, username, bio }) => {
   return (
-    <Box maxW={'xl'} w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
+    <Box w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
       <Avatar
         size={'2xl'}
         src={avatar}
