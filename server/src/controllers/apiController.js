@@ -116,7 +116,7 @@ const readUserByUsername = async (req, res) => {
   }
 };
 
-const readPostsByUsername = async (req, res) => {
+const readPostsByAuthorId = async (req, res) => {
   try {
     const { authorId } = req.params;
 
@@ -156,6 +156,6 @@ module.exports = {
   createComment,
   readPostById,
   readUserByUsername,
-  readPostsByUsername,
+  readPostsByAuthorId,
   findUserIdFromUsername,
 };

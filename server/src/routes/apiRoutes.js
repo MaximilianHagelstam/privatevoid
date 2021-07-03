@@ -15,7 +15,7 @@ router.get(
 );
 router.get(
   '/read-posts-by-authorId/:authorId',
-  apiController.readPostsByUsername
+  apiController.readPostsByAuthorId
 );
 router.get(
   '/find-userId-from-username/:username',

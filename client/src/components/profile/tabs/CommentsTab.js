@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchPostsByAuthorId, convertUsernameToId } from '../../../util/api';
-import { Post } from '../../common/post/index';
+import { Post } from '../../common/post';
 
 export const CommentsTab = ({ authorUsername }) => {
-  const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchComments = async () => {
       const { authorId } = await convertUsernameToId(authorUsername);
 
       const fetchedPosts = await fetchPostsByAuthorId(authorId);
 
-      setPosts(fetchedPosts);
+      setComments(fetchedPosts);
     };
-    fetchPosts();
+    fetchComments();
   }, [authorUsername]);
 
   return (
     <div>
-      {posts.map((post) => (
+      {comments.map((comment) => (
         <Post
-          key={post.id}
-          postId={post.id}
-          message={post.message}
-          username={post.user.username}
-          date={post.createdAt}
-          displayName={post.user.display_name}
-          avatar={post.user.image_url}
+          key={comment.id}
+          postId={comment.id}
+          message={comment.message}
+          username={comment.user.username}
+          date={comment.createdAt}
+          displayName={comment.user.display_name}
+          avatar={comment.user.image_url}
         />
       ))}
     </div>

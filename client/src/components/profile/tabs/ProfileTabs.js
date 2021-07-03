@@ -2,6 +2,7 @@ import React from 'react';
 import { Tab, Tabs, TabPanels, TabList, TabPanel, Box } from '@chakra-ui/react';
 
 import { PostsTab } from './PostsTab';
+import { CommentsTab } from './CommentsTab';
 
 export const ProfileTabs = ({ username }) => {
   return (
@@ -17,7 +18,9 @@ export const ProfileTabs = ({ username }) => {
           <TabPanel>
             <PostsTab authorUsername={username} />
           </TabPanel>
-          <TabPanel>Comments</TabPanel>
+          <TabPanel>
+            <CommentsTab authorUsername={username} />
+          </TabPanel>
           <TabPanel>
             <p>Likes</p>
           </TabPanel>
