@@ -149,6 +149,29 @@ const findUserIdFromUsername = async (req, res) => {
   res.json({ authorId: user.id });
 };
 
+const readCommentsByCreatorId = async (req, res) => {
+  try {
+    const { creatorId } = req.params;
+
+    const comments = await Comment.findAll({
+      where: { creator_id: creatorId },
+      include: [
+        {
+          model: Post,
+          required: true,
+        },
+      ],
+    });
+
+    res.json(comments);
+
+    logger.debug(JSON.stringify(comments));
+    logger.info('Comments read');
+  } catch (err) {
+    logger.error(`Error reading comments: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -158,4 +181,5 @@ module.exports = {
   readUserByUsername,
   readPostsByAuthorId,
   findUserIdFromUsername,
+  readCommentsByCreatorId,
 };

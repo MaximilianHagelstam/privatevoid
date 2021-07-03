@@ -21,5 +21,9 @@ router.get(
   '/find-userId-from-username/:username',
   apiController.findUserIdFromUsername
 );
+router.get(
+  '/read-comments-by-creatorId/:creatorId',
+  apiController.readCommentsByCreatorId
+);
 
 module.exports = router;
