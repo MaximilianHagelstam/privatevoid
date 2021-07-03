@@ -1,4 +1,5 @@
 .post {
   display: flex;
   align-items: flex-start;
+  border-bottom-width: 1px;
 }
