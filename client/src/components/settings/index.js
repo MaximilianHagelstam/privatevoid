@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   FormControl,
@@ -8,28 +8,12 @@ import {
 } from '@chakra-ui/react';
 import './Settings.css';
 
-import { fetchUser, editSettings } from '../../util/api';
+import { editSettings } from '../../util/api';
 
 export const Settings = () => {
   const toast = useToast();
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    fetchUser()
-      .then((res) => {
-        return res.json();
-      })
-      .then((resJson) => {
-        if (resJson) {
-          setUser(resJson);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +35,6 @@ export const Settings = () => {
         <FormLabel>Display Name</FormLabel>
         <Input
           type="text"
-          placeholder={user.display_name}
           size="lg"
           onChange={(e) => setDisplayName(e.target.value)}
           rounded={'full'}
@@ -61,7 +44,6 @@ export const Settings = () => {
         <FormLabel>Bio</FormLabel>
         <Input
           type="text"
-          placeholder={user.bio}
           size="lg"
           onChange={(e) => setBio(e.target.value)}
           rounded={'full'}
