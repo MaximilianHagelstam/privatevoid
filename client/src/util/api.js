@@ -115,3 +115,8 @@ export const checkLiked = (postId) =>
       'Access-Control-Allow-Credentials': true,
     },
   }).then((res) => res.json());
+
+export const fetchLikesByCreatorId = (creatorId) =>
+  fetch(`${REACT_APP_API_HOME}/api/read-likes-by-creatorId/${creatorId}`).then(
+    (res) => res.json()
+  );

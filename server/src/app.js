@@ -8,6 +8,7 @@ const db = require('./config/db');
 const User = require('./models/User');
 const Post = require('./models/Post');
 const Comment = require('./models/Comment');
+const Like = require('./models/Like');
 const logger = require('./config/logger');
 
 const home = require('./routes/homeRoutes');
@@ -66,6 +67,12 @@ Post.hasMany(Comment, { foreignKey: 'post_id' });
 Comment.belongsTo(Post, { foreignKey: 'post_id' });
 User.hasMany(Comment, { foreignKey: 'creator_id' });
 Comment.belongsTo(User, { foreignKey: 'creator_id' });
+
+// Likes-User-Post relationship
+Post.hasMany(Like, { foreignKey: 'post_id' });
+Like.belongsTo(Post, { foreignKey: 'post_id' });
+User.hasMany(Like, { foreignKey: 'user_id' });
+Like.belongsTo(User, { foreignKey: 'user_id' });
 
 // Routes
 app.use('/', home);

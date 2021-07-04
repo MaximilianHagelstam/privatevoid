@@ -3,6 +3,7 @@ import { Tab, Tabs, TabPanels, TabList, TabPanel, Box } from '@chakra-ui/react';
 
 import { PostsTab } from './PostsTab';
 import { CommentsTab } from './CommentsTab';
+import { LikeTab } from './LikeTab';
 
 export const ProfileTabs = ({ username }) => {
   return (
@@ -22,7 +23,7 @@ export const ProfileTabs = ({ username }) => {
             <CommentsTab authorUsername={username} />
           </TabPanel>
           <TabPanel>
-            <p>Likes</p>
+            <LikeTab authorUsername={username} />
           </TabPanel>
         </TabPanels>
       </Tabs>

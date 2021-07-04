@@ -34,4 +34,9 @@ router.get(
   apiController.checkIfUserLikedPost
 );
 
+router.get(
+  '/read-likes-by-creatorId/:creatorId',
+  apiController.readLikesByCreatorId
+);
+
 module.exports = router;

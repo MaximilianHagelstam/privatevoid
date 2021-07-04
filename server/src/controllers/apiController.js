@@ -246,6 +246,35 @@ const checkIfUserLikedPost = async (req, res) => {
   }
 };
 
+const readLikesByCreatorId = async (req, res) => {
+  try {
+    const { creatorId } = req.params;
+
+    const likes = await Like.findAll({
+      where: { user_id: creatorId },
+      include: [
+        {
+          model: Post,
+          required: true,
+          include: [
+            {
+              model: User,
+              required: true,
+            },
+          ],
+        },
+      ],
+    });
+
+    res.json(likes);
+
+    logger.debug(JSON.stringify(likes));
+    logger.info('Likes read');
+  } catch (err) {
+    logger.error(`Error reading likes: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -260,4 +289,5 @@ module.exports = {
   likePost,
   unLikePost,
   checkIfUserLikedPost,
+  readLikesByCreatorId,
 };
