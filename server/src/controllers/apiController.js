@@ -2,6 +2,7 @@ const logger = require('../config/logger');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const Comment = require('../models/Comment');
+const Like = require('../models/Like');
 
 const createPost = async (req) => {
   try {
@@ -198,6 +199,22 @@ const editUserSettings = async (req) => {
   }
 };
 
+const likePost = async (req) => {
+  try {
+    const newLike = {
+      user_id: req.user.id,
+      post_id: req.body.postId,
+    };
+
+    const like = await Like.create(newLike);
+
+    logger.debug(JSON.stringify(like));
+    logger.info('Like created');
+  } catch (err) {
+    logger.error(`Error creating Like: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -209,4 +226,5 @@ module.exports = {
   findUserIdFromUsername,
   readCommentsByCreatorId,
   editUserSettings,
+  likePost,
 };

@@ -80,3 +80,15 @@ export const editSettings = (data) =>
     },
     body: JSON.stringify(data),
   });
+
+export const likePost = (data) =>
+  fetch(`${REACT_APP_API_HOME}/api/like-post`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data),
+  });

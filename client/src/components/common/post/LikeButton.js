@@ -2,7 +2,9 @@ import React from 'react';
 import { IconButton } from '@chakra-ui/react';
 import { FiHeart } from 'react-icons/fi';
 
-export const LikeButton = () => {
+import { likePost } from '../../../util/api';
+
+export const LikeButton = ({ postId }) => {
   return (
     <IconButton
       variant="ghost"
@@ -10,6 +12,9 @@ export const LikeButton = () => {
       colorScheme="red"
       aria-label="Like"
       icon={<FiHeart />}
+      onClick={() => {
+        likePost({ postId });
+      }}
     />
   );
 };

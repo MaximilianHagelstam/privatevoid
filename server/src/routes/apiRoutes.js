@@ -26,5 +26,6 @@ router.get(
   apiController.readCommentsByCreatorId
 );
 router.post('/update-settings', authCheck, apiController.editUserSettings);
+router.post('/like-post', authCheck, apiController.likePost);
 
 module.exports = router;
