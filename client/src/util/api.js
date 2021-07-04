@@ -104,3 +104,14 @@ export const unLikePost = (data) =>
     },
     body: JSON.stringify(data),
   });
+
+export const checkLiked = (postId) =>
+  fetch(`${REACT_APP_API_HOME}/api/read-like-by-postId/${postId}`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+  }).then((res) => res.json());
