@@ -41,6 +41,12 @@ CREATE TABLE comments (
   post_id int REFERENCES posts(id) NOT NULL,
   creator_id int REFERENCES users(id) NOT NULL
 );
+
+CREATE TABLE likes (
+  user_id int REFERENCES users(id) NOT NULL,
+  post_id int REFERENCES posts(id) NOT NULL,
+  PRIMARY KEY (user_id, post_id)
+);
 `;
 
 client

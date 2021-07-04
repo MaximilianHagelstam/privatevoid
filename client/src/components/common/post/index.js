@@ -21,7 +21,9 @@ export const Post = ({
       {type === 'comment' ? (
         <Box maxW={'md'} w={'full'} rounded={'3xl'} p={4} overflow={'hidden'}>
           <Stack direction={'row'} spacing={4}>
-            <Avatar src={avatar} alt={'Author'} size="md" />
+            <Link to={`/user/${username}`}>
+              <Avatar src={avatar} alt={'Author'} size="md" />
+            </Link>
             <Stack direction={'column'} spacing={0}>
               <Heading as="h3" size="sm">
                 {displayName}{' '}
@@ -36,11 +38,13 @@ export const Post = ({
       ) : (
         <Box maxW={'md'} w={'full'} rounded={'3xl'} p={4} overflow={'hidden'}>
           <Stack direction={'row'} spacing={4}>
-            <Avatar
-              src={avatar}
-              alt={'Author'}
-              size={size === 'big' ? 'lg' : 'md'}
-            />
+            <Link to={`/user/${username}`}>
+              <Avatar
+                src={avatar}
+                alt={'Author'}
+                size={size === 'big' ? 'lg' : 'md'}
+              />
+            </Link>
             <Stack direction={'column'} spacing={0}>
               <Link to={`/post/${postId}`}>
                 <Heading as="h3" size={size === 'big' ? 'md' : 'sm'}>
