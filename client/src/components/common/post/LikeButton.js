@@ -22,11 +22,9 @@ export const LikeButton = ({ postId }) => {
       icon={isLiked === true ? <AiFillHeart /> : <AiOutlineHeart />}
       onClick={() => {
         if (isLiked) {
-          console.log('I JUST UNLIKED THE POST');
           setIsLiked(false);
           unLikePost({ postId });
         } else {
-          console.log('I JUST LIKED THE POST');
           setIsLiked(true);
           likePost({ postId });
         }
