@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IconButton } from '@chakra-ui/react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
 
 import { likePost, unLikePost, checkLiked } from '../../../util/api';
 
@@ -19,7 +19,9 @@ export const LikeButton = ({ postId }) => {
       rounded={'full'}
       colorScheme="red"
       aria-label="Like"
-      icon={isLiked === true ? <AiFillHeart /> : <AiOutlineHeart />}
+      icon={
+        isLiked === true ? <BsHeartFill size={14} /> : <BsHeart size={14} />
+      }
       onClick={() => {
         if (isLiked) {
           setIsLiked(false);
