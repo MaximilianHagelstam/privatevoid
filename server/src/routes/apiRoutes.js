@@ -27,5 +27,6 @@ router.get(
 );
 router.post('/update-settings', authCheck, apiController.editUserSettings);
 router.post('/like-post', authCheck, apiController.likePost);
+router.post('/remove-like', authCheck, apiController.unLikePost);
 
 module.exports = router;

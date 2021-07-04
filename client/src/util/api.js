@@ -92,3 +92,15 @@ export const likePost = (data) =>
     },
     body: JSON.stringify(data),
   });
+
+export const unLikePost = (data) =>
+  fetch(`${REACT_APP_API_HOME}/api/remove-like`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data),
+  });

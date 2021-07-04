@@ -215,6 +215,22 @@ const likePost = async (req) => {
   }
 };
 
+const unLikePost = async (req) => {
+  try {
+    const unLike = {
+      user_id: req.user.id,
+      post_id: req.body.postId,
+    };
+
+    const like = await Like.destroy({ where: unLike });
+
+    logger.debug(JSON.stringify(like));
+    logger.info('Like removed');
+  } catch (err) {
+    logger.error(`Error removing Like: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -227,4 +243,5 @@ module.exports = {
   readCommentsByCreatorId,
   editUserSettings,
   likePost,
+  unLikePost,
 };
