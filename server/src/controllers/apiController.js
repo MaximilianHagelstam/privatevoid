@@ -231,6 +231,21 @@ const unLikePost = async (req) => {
   }
 };
 
+const checkIfUserLikedPost = async (req, res) => {
+  const userId = req.user.id;
+  const { postId } = req.params;
+
+  const like = await Like.findOne({
+    where: { user_id: userId, post_id: postId },
+  });
+
+  if (like === null) {
+    res.json({ liked: false });
+  } else {
+    res.json({ liked: true });
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -244,4 +259,5 @@ module.exports = {
   editUserSettings,
   likePost,
   unLikePost,
+  checkIfUserLikedPost,
 };
