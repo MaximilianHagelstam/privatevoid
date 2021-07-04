@@ -30,3 +30,9 @@ CREATE TABLE likes (
     post_id int REFERENCES posts(id) NOT NULL,
     PRIMARY KEY (user_id, post_id)
 );
+
+CREATE TABLE followers (
+    following_user_id int REFERENCES users(id) NOT NULL,
+    followed_user_id int REFERENCES users(id) NOT NULL,
+    PRIMARY KEY (following_user_id, followed_user_id)
+);
