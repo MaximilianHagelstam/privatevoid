@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IconButton } from '@chakra-ui/react';
-import { FiHeart } from 'react-icons/fi';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 import { likePost, unLikePost, checkLiked } from '../../../util/api';
 
@@ -19,7 +19,7 @@ export const LikeButton = ({ postId }) => {
       rounded={'full'}
       colorScheme="red"
       aria-label="Like"
-      icon={<FiHeart />}
+      icon={isLiked === true ? <AiFillHeart /> : <AiOutlineHeart />}
       onClick={() => {
         if (isLiked) {
           console.log('I JUST UNLIKED THE POST');
