@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@chakra-ui/react';
 
-import { followUser, convertUsernameToId } from '../../util/api';
+import {
+  followUser,
+  unfollowUser,
+  checkFollowed,
+  convertUsernameToId,
+} from '../../util/api';
 
 export const FollowButton = ({ username }) => {
   const [isFollowed, setIdFollowed] = useState();
@@ -11,25 +16,26 @@ export const FollowButton = ({ username }) => {
   useEffect(() => {
     convertUsernameToId(username).then((res) => setUserId(res.authorId));
 
-    // checkLiked(postId).then((res) => {
-    //   setIsLiked(res.liked);
-    // });
-  }, [username]);
-
-  console.log(userId);
+    checkFollowed(userId).then((res) => {
+      setIdFollowed(res.followed);
+    });
+  }, [userId, username]);
 
   return (
     <Button
       flex={1}
+      width={175}
       rounded={'full'}
+      mt={6}
       colorScheme="blue"
       variant={isFollowed === true ? 'solid' : 'outline'}
       onClick={() => {
         if (isFollowed) {
           setIdFollowed(false);
+          unfollowUser({ userId });
         } else {
           setIdFollowed(true);
-          followUser({ followedId: userId });
+          followUser({ userId });
         }
       }}
     >

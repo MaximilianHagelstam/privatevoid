@@ -76,10 +76,10 @@ User.hasMany(Like, { foreignKey: 'user_id' });
 Like.belongsTo(User, { foreignKey: 'user_id' });
 
 // Follow-User relationship
-User.hasMany(Follow, { foreignKey: 'following_user_id' });
-Follow.belongsTo(User, { foreignKey: 'following_user_id' });
-User.hasMany(Follow, { foreignKey: 'followed_user_id' });
-Follow.belongsTo(User, { foreignKey: 'followed_user_id' });
+User.hasMany(Follow, { foreignKey: 'user_id2' });
+Follow.belongsTo(User, { foreignKey: 'user_id2' });
+User.hasMany(Follow, { foreignKey: 'user_id1' });
+Follow.belongsTo(User, { foreignKey: 'user_id1' });
 
 // Routes
 app.use('/', home);

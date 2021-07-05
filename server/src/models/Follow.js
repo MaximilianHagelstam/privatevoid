@@ -4,12 +4,12 @@ const db = require('../config/db');
 const Follow = db.define(
   'followers',
   {
-    following_user_id: {
+    user_id1: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    followed_user_id: {
+    user_id2: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

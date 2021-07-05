@@ -38,5 +38,11 @@ router.get(
   apiController.readLikesByCreatorId
 );
 router.post('/follow-user', authCheck, apiController.followUser);
+router.post('/unfollow-user', authCheck, apiController.unfollowUser);
+router.get(
+  '/read-follow-by-userId/:userId',
+  authCheck,
+  apiController.checkIfUserFollowsUser
+);
 
 module.exports = router;

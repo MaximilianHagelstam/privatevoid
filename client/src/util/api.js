@@ -132,3 +132,26 @@ export const followUser = (data) =>
     },
     body: JSON.stringify(data),
   });
+
+export const unfollowUser = (data) =>
+  fetch(`${REACT_APP_API_HOME}/api/unfollow-user`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data),
+  });
+
+export const checkFollowed = (userId) =>
+  fetch(`${REACT_APP_API_HOME}/api/read-follow-by-userId/${userId}`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+  }).then((res) => res.json());

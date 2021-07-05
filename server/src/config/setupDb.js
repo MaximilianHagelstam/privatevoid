@@ -49,9 +49,9 @@ CREATE TABLE likes (
 );
 
 CREATE TABLE followers (
-  following_user_id int REFERENCES users(id) NOT NULL,
-  followed_user_id int REFERENCES users(id) NOT NULL,
-  PRIMARY KEY (following_user_id, followed_user_id)
+  user_id1 int REFERENCES users(id) NOT NULL,
+  user_id2 int REFERENCES users(id) NOT NULL,
+  PRIMARY KEY (user_id1, user_id2)
 );
 `;
 

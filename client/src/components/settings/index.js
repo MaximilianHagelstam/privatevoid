@@ -31,7 +31,7 @@ export const Settings = () => {
 
   return (
     <form className="settings" onSubmit={onSubmit}>
-      <FormControl mt={4}>
+      <FormControl mt={4} isRequired>
         <FormLabel>Display Name</FormLabel>
         <Input
           type="text"
@@ -40,7 +40,7 @@ export const Settings = () => {
           rounded={'full'}
         />
       </FormControl>
-      <FormControl mt={4}>
+      <FormControl mt={4} isRequired>
         <FormLabel>Bio</FormLabel>
         <Input
           type="text"
