@@ -1,6 +1,8 @@
 import React from 'react';
 import { Heading, Avatar, Box, Text, Stack, Button } from '@chakra-ui/react';
 
+import { FollowButton } from './FollowButton';
+
 export const ProfileCard = ({ avatar, displayName, username, bio }) => {
   return (
     <Box w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
@@ -23,9 +25,7 @@ export const ProfileCard = ({ avatar, displayName, username, bio }) => {
         <Button flex={1} colorScheme="blue" rounded={'full'}>
           Message
         </Button>
-        <Button flex={1} rounded={'full'} colorScheme="blue" variant="outline">
-          Follow
-        </Button>
+        <FollowButton username={username} />
       </Stack>
     </Box>
   );
