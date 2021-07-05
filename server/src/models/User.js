@@ -13,7 +13,7 @@ const User = db.define('users', {
   },
   display_name: {
     type: DataTypes.TEXT,
-    allowNull: false,
+    allowNull: true,
   },
   image_url: {
     type: DataTypes.TEXT,

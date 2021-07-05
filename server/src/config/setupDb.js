@@ -18,7 +18,7 @@ const query = `
 CREATE TABLE users (
   id int PRIMARY KEY,
   username text UNIQUE NOT NULL,
-  display_name text NOT NULL,
+  display_name text,
   image_url text NOT NULL,
   "createdAt" date NOT NULL,
   "updatedAt" date NOT NULL,

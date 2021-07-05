@@ -2,8 +2,11 @@ const Sequelize = require('sequelize');
 
 const { PG_DATABASE, PG_USERNAME, PG_PASSWORD, PG_HOST, PG_PORT } = process.env;
 
-const connectionString = `postgres://${PG_USERNAME}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DATABASE}`;
-
-const db = new Sequelize(connectionString);
+const db = new Sequelize(PG_DATABASE, PG_USERNAME, PG_PASSWORD, {
+  dialect: 'postgres',
+  host: PG_HOST,
+  port: PG_PORT,
+  logging: false,
+});
 
 module.exports = db;
