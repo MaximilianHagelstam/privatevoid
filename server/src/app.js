@@ -9,6 +9,7 @@ const User = require('./models/User');
 const Post = require('./models/Post');
 const Comment = require('./models/Comment');
 const Like = require('./models/Like');
+const Follow = require('./models/Follow');
 const logger = require('./config/logger');
 
 const home = require('./routes/homeRoutes');
@@ -23,7 +24,7 @@ const DAY = 24 * 60 * 60 * 1000;
 
 const { CLIENT_HOME } = process.env;
 
-// Configure express
+// Configure e  xpress
 app.use(
   cors({
     origin: CLIENT_HOME,
@@ -73,6 +74,12 @@ Post.hasMany(Like, { foreignKey: 'post_id' });
 Like.belongsTo(Post, { foreignKey: 'post_id' });
 User.hasMany(Like, { foreignKey: 'user_id' });
 Like.belongsTo(User, { foreignKey: 'user_id' });
+
+// Follow-User relationship
+User.hasMany(Follow, { foreignKey: 'following_user_id' });
+Follow.belongsTo(User, { foreignKey: 'following_user_id' });
+User.hasMany(Follow, { foreignKey: 'followed_user_id' });
+Follow.belongsTo(User, { foreignKey: 'followed_user_id' });
 
 // Routes
 app.use('/', home);
