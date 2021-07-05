@@ -1,3 +1,4 @@
+const db = require('../config/db');
 const logger = require('../config/logger');
 const Post = require('../models/Post');
 const User = require('../models/User');
@@ -320,6 +321,26 @@ const checkIfUserFollowsUser = async (req, res) => {
   }
 };
 
+const readPostsByFollowing = async (req, res) => {
+  try {
+    const ultimateQuery = `
+    SELECT posts.message, posts."createdAt", users.display_name, users.username, users.image_url FROM posts
+      INNER JOIN users ON posts.author_id = users.id
+      WHERE author_id IN
+      (SELECT user_id2 FROM followers WHERE user_id1 = ${req.user.id})
+      ORDER BY "createdAt"  DESC;
+    `;
+
+    const [results] = await db.query(ultimateQuery);
+
+    logger.debug(JSON.stringify(results));
+    res.json(results);
+    logger.info('Posts read');
+  } catch (err) {
+    logger.error(`Error reading posts: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -338,4 +359,5 @@ module.exports = {
   followUser,
   unfollowUser,
   checkIfUserFollowsUser,
+  readPostsByFollowing,
 };

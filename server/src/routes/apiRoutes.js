@@ -44,5 +44,6 @@ router.get(
   authCheck,
   apiController.checkIfUserFollowsUser
 );
+router.get('/following-posts', authCheck, apiController.readPostsByFollowing);
 
 module.exports = router;
