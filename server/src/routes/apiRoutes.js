@@ -33,10 +33,10 @@ router.get(
   authCheck,
   apiController.checkIfUserLikedPost
 );
-
 router.get(
   '/read-likes-by-creatorId/:creatorId',
   apiController.readLikesByCreatorId
 );
+router.post('/follow-user', authCheck, apiController.followUser);
 
 module.exports = router;

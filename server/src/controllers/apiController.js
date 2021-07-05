@@ -3,6 +3,7 @@ const Post = require('../models/Post');
 const User = require('../models/User');
 const Comment = require('../models/Comment');
 const Like = require('../models/Like');
+const Follow = require('../models/Follow');
 
 const createPost = async (req) => {
   try {
@@ -275,6 +276,22 @@ const readLikesByCreatorId = async (req, res) => {
   }
 };
 
+const followUser = async (req) => {
+  try {
+    const newFollow = {
+      following_user_id: req.user.id,
+      followed_user_id: req.body.followedId,
+    };
+
+    const follow = await Follow.create(newFollow);
+
+    logger.debug(JSON.stringify(follow));
+    logger.info('Follow created');
+  } catch (err) {
+    logger.error(`Error creating follow: ${err}`);
+  }
+};
+
 module.exports = {
   createPost,
   readPosts,
@@ -290,4 +307,5 @@ module.exports = {
   unLikePost,
   checkIfUserLikedPost,
   readLikesByCreatorId,
+  followUser,
 };
