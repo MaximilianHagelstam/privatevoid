@@ -5,27 +5,22 @@ const Comment = require('../models/Comment');
 
 const createComment = async (req) => {
   try {
-    const newComment = {
+    const comment = await Comment.create({
       body: req.body.body,
       post_id: req.body.postId,
       creator_id: req.user.id,
-    };
+    });
 
-    const comment = await Comment.create(newComment);
-
-    logger.debug(JSON.stringify(comment));
-    logger.info('Comment created');
+    logger.info(`Created comment: ${comment.body}`);
   } catch (err) {
-    logger.error(`Error creating comment: ${err}`);
+    logger.error(err);
   }
 };
 
-const readCommentsByCreatorId = async (req, res) => {
+const getCommentsByCreatorId = async (req, res) => {
   try {
-    const { creatorId } = req.params;
-
     const comments = await Comment.findAll({
-      where: { creator_id: creatorId },
+      where: { creator_id: req.params.creatorId },
       include: [
         {
           model: Post,
@@ -46,15 +41,12 @@ const readCommentsByCreatorId = async (req, res) => {
     });
 
     res.json(comments);
-
-    logger.debug(JSON.stringify(comments));
-    logger.info('Comments read');
   } catch (err) {
-    logger.error(`Error reading comments: ${err}`);
+    logger.error(err);
   }
 };
 
 module.exports = {
   createComment,
-  readCommentsByCreatorId,
+  getCommentsByCreatorId,
 };

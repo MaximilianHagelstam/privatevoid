@@ -2,42 +2,43 @@ const logger = require('../../../config/logger');
 const User = require('../models/User');
 
 const sendCurrentUser = (req, res) => {
-  const { user } = req;
-
-  logger.debug(JSON.stringify(user));
-  res.json(user);
+  try {
+    logger.info(`Current user is: @${JSON.stringify(req.user.username)}`);
+    res.json(req.user);
+  } catch (err) {
+    logger.error(err);
+  }
 };
 
 const readUserByUsername = async (req, res) => {
   try {
-    const { searchedUsername } = req.params;
-
-    const user = await User.findOne({ where: { username: searchedUsername } });
-
-    logger.debug(JSON.stringify(user));
+    const user = await User.findOne({
+      where: { username: req.params.searchedUsername },
+    });
 
     if (user === null) {
-      res.status(404).json({ message: 'User not found' });
-
       logger.info('User not found');
+      res.status(404).json({ message: 'User not found' });
     } else {
-      res.json(user);
-
       logger.info('User found');
+      res.json(user);
     }
   } catch (err) {
-    logger.error(`Error finding user: ${err}`);
+    logger.error(err);
   }
 };
 
 const findUserIdFromUsername = async (req, res) => {
-  const { username } = req.params;
+  try {
+    const user = await User.findOne({
+      where: { username: req.params.username },
+    });
 
-  const user = await User.findOne({
-    where: { username },
-  });
-
-  res.json({ authorId: user.id });
+    logger.info(`Username @${req.params.username} has the id ${user.id}`);
+    res.json({ authorId: user.id });
+  } catch (err) {
+    logger.error(err);
+  }
 };
 
 const editUserSettings = async (req) => {
@@ -46,10 +47,8 @@ const editUserSettings = async (req) => {
       { display_name: req.body.displayName, bio: req.body.bio },
       { where: { id: req.user.id } }
     );
-
-    logger.info('Settings updated');
   } catch (err) {
-    logger.error(`Error updating settings: ${err}`);
+    logger.error(err);
   }
 };
 

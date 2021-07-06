@@ -4,45 +4,47 @@ const Follow = require('../models/Follow');
 
 const followUser = async (req) => {
   try {
-    const newFollow = {
+    const follow = await Follow.create({
       user_id1: req.user.id,
       user_id2: req.body.userId,
-    };
+    });
 
-    const follow = await Follow.create(newFollow);
-
-    logger.debug(JSON.stringify(follow));
-    logger.info('Follow created');
+    logger.info(`Followed user: ${follow.user_id2}`);
   } catch (err) {
-    logger.error(`Error creating follow: ${err}`);
+    logger.error(err);
   }
 };
 
 const unfollowUser = async (req) => {
   try {
-    const newUnfollow = {
-      user_id1: req.user.id,
-      user_id2: req.body.userId,
-    };
+    const unfollow = await Follow.destroy({
+      where: {
+        user_id1: req.user.id,
+        user_id2: req.body.userId,
+      },
+    });
 
-    const unfollow = await Follow.destroy({ where: newUnfollow });
-
-    logger.debug(JSON.stringify(unfollow));
-    logger.info('Follow removed');
+    logger.info(`Unfollowed user: ${unfollow.user_id2}`);
   } catch (err) {
-    logger.error(`Error removing follow: ${err}`);
+    logger.error(err);
   }
 };
 
 const checkIfUserFollowsUser = async (req, res) => {
-  const follow = await Follow.findOne({
-    where: { user_id1: req.user.id, user_id2: req.params.userId },
-  });
+  try {
+    const follow = await Follow.findOne({
+      where: { user_id1: req.user.id, user_id2: req.params.userId },
+    });
 
-  if (follow === null) {
-    res.json({ followed: false });
-  } else {
-    res.json({ followed: true });
+    if (follow === null) {
+      logger.info(`${req.user.id} dosen't follow ${req.params.userId}`);
+      res.json({ followed: false });
+    } else {
+      logger.info(`${req.user.id} follows ${req.params.userId}`);
+      res.json({ followed: true });
+    }
+  } catch (err) {
+    logger.error(err);
   }
 };
 
@@ -58,11 +60,9 @@ const readPostsByFollowing = async (req, res) => {
 
     const [results] = await db.query(ultimateQuery);
 
-    logger.debug(JSON.stringify(results));
     res.json(results);
-    logger.info('Posts read');
   } catch (err) {
-    logger.error(`Error reading posts: ${err}`);
+    logger.error(err);
   }
 };
 

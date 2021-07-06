@@ -22,7 +22,6 @@ module.exports = (passport) => {
 
         try {
           let user = await User.findOne({ where: { id: profile.id } });
-          logger.debug(JSON.stringify(user));
 
           if (user) {
             done(null, user);
@@ -34,7 +33,7 @@ module.exports = (passport) => {
           }
           logger.debug(user);
         } catch (err) {
-          logger.error(`Error authenticating user: ${err}`);
+          logger.error(err);
         }
       }
     )

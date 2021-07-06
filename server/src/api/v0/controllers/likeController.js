@@ -5,57 +5,54 @@ const Like = require('../models/Like');
 
 const likePost = async (req) => {
   try {
-    const newLike = {
+    await Like.create({
       user_id: req.user.id,
       post_id: req.body.postId,
-    };
+    });
 
-    const like = await Like.create(newLike);
-
-    logger.debug(JSON.stringify(like));
-    logger.info('Like created');
+    logger.info(`User ${req.user.id} likes post ${req.body.postId}`);
   } catch (err) {
-    logger.error(`Error creating Like: ${err}`);
+    logger.error(err);
   }
 };
 
 const unLikePost = async (req) => {
   try {
-    const unLike = {
-      user_id: req.user.id,
-      post_id: req.body.postId,
-    };
+    await Like.destroy({
+      where: {
+        user_id: req.user.id,
+        post_id: req.body.postId,
+      },
+    });
 
-    const like = await Like.destroy({ where: unLike });
-
-    logger.debug(JSON.stringify(like));
-    logger.info('Like removed');
+    logger.info(`Unliked post: ${req.body.postId}`);
   } catch (err) {
-    logger.error(`Error removing Like: ${err}`);
+    logger.error(err);
   }
 };
 
 const checkIfUserLikedPost = async (req, res) => {
-  const userId = req.user.id;
-  const { postId } = req.params;
+  try {
+    const like = await Like.findOne({
+      where: { user_id: req.user.id, post_id: req.params.postId },
+    });
 
-  const like = await Like.findOne({
-    where: { user_id: userId, post_id: postId },
-  });
-
-  if (like === null) {
-    res.json({ liked: false });
-  } else {
-    res.json({ liked: true });
+    if (like === null) {
+      logger.info(`User ${req.user.id} dosen't like post ${req.params.postId}`);
+      res.json({ liked: false });
+    } else {
+      logger.info(`User ${req.user.id} likes post ${req.params.postId}`);
+      res.json({ liked: true });
+    }
+  } catch (err) {
+    logger.error(err);
   }
 };
 
 const readLikesByCreatorId = async (req, res) => {
   try {
-    const { creatorId } = req.params;
-
     const likes = await Like.findAll({
-      where: { user_id: creatorId },
+      where: { user_id: req.params.creatorId },
       include: [
         {
           model: Post,
@@ -71,11 +68,8 @@ const readLikesByCreatorId = async (req, res) => {
     });
 
     res.json(likes);
-
-    logger.debug(JSON.stringify(likes));
-    logger.info('Likes read');
   } catch (err) {
-    logger.error(`Error reading likes: ${err}`);
+    logger.error(err);
   }
 };
 
