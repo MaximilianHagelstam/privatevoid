@@ -48,7 +48,7 @@ const checkIfUserFollowsUser = async (req, res) => {
   }
 };
 
-const readPostsByFollowing = async (req, res) => {
+const getPostsByFollowing = async (req, res) => {
   try {
     const ultimateQuery = `
       SELECT posts.message, posts."createdAt", users.display_name, users.username, users.image_url FROM posts
@@ -70,5 +70,5 @@ module.exports = {
   followUser,
   unfollowUser,
   checkIfUserFollowsUser,
-  readPostsByFollowing,
+  getPostsByFollowing,
 };

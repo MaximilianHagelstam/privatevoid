@@ -10,7 +10,7 @@ const sendCurrentUser = (req, res) => {
   }
 };
 
-const readUserByUsername = async (req, res) => {
+const getUserByUsername = async (req, res) => {
   try {
     const user = await User.findOne({
       where: { username: req.params.searchedUsername },
@@ -54,7 +54,7 @@ const editUserSettings = async (req) => {
 
 module.exports = {
   sendCurrentUser,
-  readUserByUsername,
+  getUserByUsername,
   findUserIdFromUsername,
   editUserSettings,
 };

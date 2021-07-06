@@ -16,7 +16,7 @@ const createPost = async (req) => {
   }
 };
 
-const readPosts = async (req, res) => {
+const getPosts = async (req, res) => {
   try {
     const posts = await Post.findAll({
       include: [
@@ -34,7 +34,7 @@ const readPosts = async (req, res) => {
   }
 };
 
-const readPostById = async (req, res) => {
+const getPostById = async (req, res) => {
   try {
     const postId = Number(req.params.postId);
 
@@ -64,7 +64,7 @@ const readPostById = async (req, res) => {
   }
 };
 
-const readPostsByAuthorId = async (req, res) => {
+const getPostsByAuthorId = async (req, res) => {
   try {
     const posts = await Post.findAll({
       where: { author_id: req.params.authorId },
@@ -86,7 +86,7 @@ const readPostsByAuthorId = async (req, res) => {
 
 module.exports = {
   createPost,
-  readPosts,
-  readPostById,
-  readPostsByAuthorId,
+  getPosts,
+  getPostById,
+  getPostsByAuthorId,
 };

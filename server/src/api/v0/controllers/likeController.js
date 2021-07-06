@@ -49,7 +49,7 @@ const checkIfUserLikedPost = async (req, res) => {
   }
 };
 
-const readLikesByCreatorId = async (req, res) => {
+const getLikesByCreatorId = async (req, res) => {
   try {
     const likes = await Like.findAll({
       where: { user_id: req.params.creatorId },
@@ -77,5 +77,5 @@ module.exports = {
   likePost,
   unLikePost,
   checkIfUserLikedPost,
-  readLikesByCreatorId,
+  getLikesByCreatorId,
 };
