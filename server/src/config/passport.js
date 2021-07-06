@@ -1,5 +1,5 @@
 const GitHubStrategy = require('passport-github2').Strategy;
-const User = require('../models/User');
+const User = require('../api/v0/models/User');
 const logger = require('./logger');
 
 module.exports = (passport) => {

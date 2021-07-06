@@ -1,15 +1,15 @@
 const { DataTypes } = require('sequelize');
-const db = require('../config/db');
+const db = require('../../../config/db');
 
-const Like = db.define(
-  'likes',
+const Follow = db.define(
+  'followers',
   {
-    user_id: {
+    user_id1: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    post_id: {
+    user_id2: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -18,4 +18,4 @@ const Like = db.define(
   { timestamps: false }
 );
 
-module.exports = Like;
+module.exports = Follow;

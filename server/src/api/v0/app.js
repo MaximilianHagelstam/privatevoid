@@ -4,19 +4,17 @@ const cors = require('cors');
 const session = require('cookie-session');
 const passport = require('passport');
 
-const db = require('./config/db');
+const db = require('../../config/db');
 const User = require('./models/User');
 const Post = require('./models/Post');
 const Comment = require('./models/Comment');
 const Like = require('./models/Like');
 const Follow = require('./models/Follow');
-const logger = require('./config/logger');
+const logger = require('../../config/logger');
 
-const home = require('./routes/homeRoutes');
-const api = require('./routes/apiRoutes');
-const auth = require('./routes/authRoutes');
+const apiRoutes = require('./routes/index');
 
-require('./config/passport')(passport);
+require('../../config/passport')(passport);
 
 const app = express();
 
@@ -82,8 +80,6 @@ User.hasMany(Follow, { foreignKey: 'user_id1' });
 Follow.belongsTo(User, { foreignKey: 'user_id1' });
 
 // Routes
-app.use('/', home);
-app.use('/api', api);
-app.use('/auth', auth);
+app.use('/api/v0', apiRoutes);
 
 module.exports = app;

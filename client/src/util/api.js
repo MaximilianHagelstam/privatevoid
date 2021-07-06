@@ -1,10 +1,10 @@
 const { REACT_APP_API_HOME } = process.env;
 
 export const fetchPosts = () =>
-  fetch(`${REACT_APP_API_HOME}/api/read-posts`).then((res) => res.json());
+  fetch(`${REACT_APP_API_HOME}/posts/read-posts`).then((res) => res.json());
 
 export const createPost = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/create-post`, {
+  fetch(`${REACT_APP_API_HOME}/posts/create-post`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -16,7 +16,7 @@ export const createPost = (data) =>
   });
 
 export const createComment = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/create-comment`, {
+  fetch(`${REACT_APP_API_HOME}/comments/create-comment`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -28,7 +28,7 @@ export const createComment = (data) =>
   });
 
 export const fetchUser = () =>
-  fetch(`${REACT_APP_API_HOME}/api/current-user`, {
+  fetch(`${REACT_APP_API_HOME}/profile/current-user`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -39,13 +39,13 @@ export const fetchUser = () =>
   });
 
 export const fetchPostById = (postId) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-post-by-id/${postId}`).then((res) =>
+  fetch(`${REACT_APP_API_HOME}/posts/read-post-by-id/${postId}`).then((res) =>
     res.json()
   );
 
 export const fetchUserByUsername = (searchedUsername) =>
   fetch(
-    `${REACT_APP_API_HOME}/api/read-user-by-username/${searchedUsername}`
+    `${REACT_APP_API_HOME}/profile/read-user-by-username/${searchedUsername}`
   ).then((res) => {
     if (res.status === 200) {
       return res.json();
@@ -55,22 +55,22 @@ export const fetchUserByUsername = (searchedUsername) =>
   });
 
 export const fetchPostsByAuthorId = (authorId) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-posts-by-authorId/${authorId}`).then(
+  fetch(`${REACT_APP_API_HOME}/posts/read-posts-by-authorId/${authorId}`).then(
     (res) => res.json()
   );
 
 export const convertUsernameToId = (username) =>
-  fetch(`${REACT_APP_API_HOME}/api/find-userId-from-username/${username}`).then(
-    (res) => res.json()
-  );
+  fetch(
+    `${REACT_APP_API_HOME}/profile/find-userId-from-username/${username}`
+  ).then((res) => res.json());
 
 export const fetchCommentsByCreatorId = (creatorId) =>
   fetch(
-    `${REACT_APP_API_HOME}/api/read-comments-by-creatorId/${creatorId}`
+    `${REACT_APP_API_HOME}/comments/read-comments-by-creatorId/${creatorId}`
   ).then((res) => res.json());
 
 export const editSettings = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/update-settings`, {
+  fetch(`${REACT_APP_API_HOME}/profile/update-settings`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -82,7 +82,7 @@ export const editSettings = (data) =>
   });
 
 export const likePost = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/like-post`, {
+  fetch(`${REACT_APP_API_HOME}/likes/like-post`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -94,7 +94,7 @@ export const likePost = (data) =>
   });
 
 export const unLikePost = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/remove-like`, {
+  fetch(`${REACT_APP_API_HOME}/likes/remove-like`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -106,7 +106,7 @@ export const unLikePost = (data) =>
   });
 
 export const checkLiked = (postId) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-like-by-postId/${postId}`, {
+  fetch(`${REACT_APP_API_HOME}/likes/read-like-by-postId/${postId}`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -117,12 +117,12 @@ export const checkLiked = (postId) =>
   }).then((res) => res.json());
 
 export const fetchLikesByCreatorId = (creatorId) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-likes-by-creatorId/${creatorId}`).then(
-    (res) => res.json()
-  );
+  fetch(
+    `${REACT_APP_API_HOME}/likes/read-likes-by-creatorId/${creatorId}`
+  ).then((res) => res.json());
 
 export const followUser = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/follow-user`, {
+  fetch(`${REACT_APP_API_HOME}/follow/follow-user`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -134,7 +134,7 @@ export const followUser = (data) =>
   });
 
 export const unfollowUser = (data) =>
-  fetch(`${REACT_APP_API_HOME}/api/unfollow-user`, {
+  fetch(`${REACT_APP_API_HOME}/follow/unfollow-user`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -146,7 +146,7 @@ export const unfollowUser = (data) =>
   });
 
 export const checkFollowed = (userId) =>
-  fetch(`${REACT_APP_API_HOME}/api/read-follow-by-userId/${userId}`, {
+  fetch(`${REACT_APP_API_HOME}/follow/read-follow-by-userId/${userId}`, {
     method: 'GET',
     credentials: 'include',
     headers: {

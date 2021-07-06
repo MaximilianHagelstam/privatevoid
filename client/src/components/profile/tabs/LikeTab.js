@@ -9,7 +9,6 @@ export const LikeTab = ({ authorUsername }) => {
   useEffect(() => {
     const fetchLikes = async () => {
       const { authorId } = await convertUsernameToId(authorUsername);
-
       const fetchedLikes = await fetchLikesByCreatorId(authorId);
 
       setLikes(fetchedLikes);

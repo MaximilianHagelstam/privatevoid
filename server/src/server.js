@@ -1,4 +1,4 @@
-const app = require('./app');
+const app = require('./api/v0/app');
 const logger = require('./config/logger');
 
 const PORT = process.env.PORT || 8080;
