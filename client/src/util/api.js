@@ -170,3 +170,14 @@ export const checkFollowed = (userId) =>
       'Access-Control-Allow-Credentials': true,
     },
   }).then((res) => res.json());
+
+export const fetchFollowedPosts = () =>
+  fetch(`${REACT_APP_API_HOME}/follow/following-posts`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+  }).then((res) => res.json());
