@@ -1,6 +1,9 @@
-const db = require('../../../config/db');
+const { Op } = require('sequelize');
 const logger = require('../../../config/logger');
 const Follow = require('../models/Follow');
+const Post = require('../models/Post');
+const User = require('../models/User');
+const { createListOfFollowing } = require('../services/createListOfFollowing');
 
 const followUser = async (req) => {
   try {
@@ -17,14 +20,14 @@ const followUser = async (req) => {
 
 const unfollowUser = async (req) => {
   try {
-    const unfollow = await Follow.destroy({
+    await Follow.destroy({
       where: {
         user_id1: req.user.id,
         user_id2: req.body.userId,
       },
     });
 
-    logger.info(`Unfollowed user: ${unfollow.user_id2}`);
+    logger.info(`Unfollowed user: ${req.body.userId}`);
   } catch (err) {
     logger.error(err);
   }
@@ -50,17 +53,22 @@ const checkIfUserFollowsUser = async (req, res) => {
 
 const getPostsByFollowing = async (req, res) => {
   try {
-    const ultimateQuery = `
-      SELECT posts.message, posts."createdAt", users.display_name, users.username, users.image_url FROM posts
-        INNER JOIN users ON posts.author_id = users.id
-        WHERE author_id IN
-        (SELECT user_id2 FROM followers WHERE user_id1 = ${req.user.id})
-        ORDER BY "createdAt"  DESC;
-      `;
+    const following = await createListOfFollowing(req.user.id);
 
-    const [results] = await db.query(ultimateQuery);
+    const posts = await Post.findAll({
+      where: {
+        author_id: { [Op.in]: following },
+      },
+      include: [
+        {
+          model: User,
+          required: true,
+        },
+      ],
+      order: [['createdAt', 'DESC']],
+    });
 
-    res.json(results);
+    res.json(posts);
   } catch (err) {
     logger.error(err);
   }

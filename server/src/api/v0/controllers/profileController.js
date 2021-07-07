@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const sendCurrentUser = (req, res) => {
   try {
-    logger.info(`Current user is: @${JSON.stringify(req.user.username)}`);
+    logger.info(`Current user is @${req.user.username}`);
     res.json(req.user);
   } catch (err) {
     logger.error(err);
