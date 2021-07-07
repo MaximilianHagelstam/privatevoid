@@ -4,6 +4,8 @@ const cors = require('cors');
 const session = require('cookie-session');
 const passport = require('passport');
 const morgan = require('morgan');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const db = require('../../config/db');
 const User = require('./models/User');
@@ -23,7 +25,7 @@ const DAY = 24 * 60 * 60 * 1000;
 
 const { CLIENT_HOME } = process.env;
 
-// Configure e  xpress
+// Configure express
 app.use(morgan('dev'));
 app.use(
   cors({
@@ -49,6 +51,22 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Swagger setup
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'PrivateVoid API',
+      description: 'PrivateVoid API Information',
+      contact: {
+        name: 'Maximilian Hagelstam',
+      },
+      servers: ['http://localhost:8080'],
+    },
+  },
+  apis: ['./routes/*.js'],
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 // Test db connection
 db.authenticate()
@@ -83,5 +101,6 @@ Follow.belongsTo(User, { foreignKey: 'user_id1' });
 
 // Routes
 app.use('/api/v0', apiRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 module.exports = app;
