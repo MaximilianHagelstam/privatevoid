@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const session = require('cookie-session');
 const passport = require('passport');
+const morgan = require('morgan');
 
 const db = require('../../config/db');
 const User = require('./models/User');
@@ -23,6 +24,7 @@ const DAY = 24 * 60 * 60 * 1000;
 const { CLIENT_HOME } = process.env;
 
 // Configure e  xpress
+app.use(morgan('dev'));
 app.use(
   cors({
     origin: CLIENT_HOME,
