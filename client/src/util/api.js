@@ -1,8 +1,8 @@
 const { REACT_APP_API_HOME } = process.env;
 
-export const fetchPosts = () =>
-  fetch(`${REACT_APP_API_HOME}/posts/read-posts`).then((res) => res.json());
-
+/**
+ * POSTS
+ */
 export const createPost = (data) =>
   fetch(`${REACT_APP_API_HOME}/posts/create-post`, {
     method: 'POST',
@@ -15,6 +15,22 @@ export const createPost = (data) =>
     body: JSON.stringify(data),
   });
 
+export const fetchPosts = () =>
+  fetch(`${REACT_APP_API_HOME}/posts/get-posts`).then((res) => res.json());
+
+export const fetchPostById = (postId) =>
+  fetch(`${REACT_APP_API_HOME}/posts/get-post-by-id/${postId}`).then((res) =>
+    res.json()
+  );
+
+export const fetchPostsByAuthorId = (authorId) =>
+  fetch(`${REACT_APP_API_HOME}/posts/get-posts-by-authorId/${authorId}`).then(
+    (res) => res.json()
+  );
+
+/**
+ * COMMENTS
+ */
 export const createComment = (data) =>
   fetch(`${REACT_APP_API_HOME}/comments/create-comment`, {
     method: 'POST',
@@ -27,8 +43,16 @@ export const createComment = (data) =>
     body: JSON.stringify(data),
   });
 
-export const fetchUser = () =>
-  fetch(`${REACT_APP_API_HOME}/profile/current-user`, {
+export const fetchCommentsByCreatorId = (creatorId) =>
+  fetch(
+    `${REACT_APP_API_HOME}/comments/get-comments-by-creatorId/${creatorId}`
+  ).then((res) => res.json());
+
+/**
+ * Profile
+ */
+export const fetchCurrentUser = () =>
+  fetch(`${REACT_APP_API_HOME}/profile/get-current-user`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -38,14 +62,9 @@ export const fetchUser = () =>
     },
   });
 
-export const fetchPostById = (postId) =>
-  fetch(`${REACT_APP_API_HOME}/posts/read-post-by-id/${postId}`).then((res) =>
-    res.json()
-  );
-
 export const fetchUserByUsername = (searchedUsername) =>
   fetch(
-    `${REACT_APP_API_HOME}/profile/read-user-by-username/${searchedUsername}`
+    `${REACT_APP_API_HOME}/profile/get-user-by-username/${searchedUsername}`
   ).then((res) => {
     if (res.status === 200) {
       return res.json();
@@ -54,19 +73,9 @@ export const fetchUserByUsername = (searchedUsername) =>
     }
   });
 
-export const fetchPostsByAuthorId = (authorId) =>
-  fetch(`${REACT_APP_API_HOME}/posts/read-posts-by-authorId/${authorId}`).then(
-    (res) => res.json()
-  );
-
 export const convertUsernameToId = (username) =>
   fetch(
     `${REACT_APP_API_HOME}/profile/find-userId-from-username/${username}`
-  ).then((res) => res.json());
-
-export const fetchCommentsByCreatorId = (creatorId) =>
-  fetch(
-    `${REACT_APP_API_HOME}/comments/read-comments-by-creatorId/${creatorId}`
   ).then((res) => res.json());
 
 export const editSettings = (data) =>
@@ -81,6 +90,9 @@ export const editSettings = (data) =>
     body: JSON.stringify(data),
   });
 
+/**
+ * LIKES
+ */
 export const likePost = (data) =>
   fetch(`${REACT_APP_API_HOME}/likes/like-post`, {
     method: 'POST',
@@ -106,7 +118,7 @@ export const unLikePost = (data) =>
   });
 
 export const checkLiked = (postId) =>
-  fetch(`${REACT_APP_API_HOME}/likes/read-like-by-postId/${postId}`, {
+  fetch(`${REACT_APP_API_HOME}/likes/is-post-liked/${postId}`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -117,10 +129,13 @@ export const checkLiked = (postId) =>
   }).then((res) => res.json());
 
 export const fetchLikesByCreatorId = (creatorId) =>
-  fetch(
-    `${REACT_APP_API_HOME}/likes/read-likes-by-creatorId/${creatorId}`
-  ).then((res) => res.json());
+  fetch(`${REACT_APP_API_HOME}/likes/get-likes-by-creatorId/${creatorId}`).then(
+    (res) => res.json()
+  );
 
+/**
+ * Follow
+ */
 export const followUser = (data) =>
   fetch(`${REACT_APP_API_HOME}/follow/follow-user`, {
     method: 'POST',
@@ -146,7 +161,7 @@ export const unfollowUser = (data) =>
   });
 
 export const checkFollowed = (userId) =>
-  fetch(`${REACT_APP_API_HOME}/follow/read-follow-by-userId/${userId}`, {
+  fetch(`${REACT_APP_API_HOME}/follow/is-user-followed/${userId}`, {
     method: 'GET',
     credentials: 'include',
     headers: {

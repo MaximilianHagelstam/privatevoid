@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post('/like-post', authCheck, likePost);
 router.post('/remove-like', authCheck, unLikePost);
-router.get('/read-like-by-postId/:postId', authCheck, checkIfUserLikedPost);
-router.get('/read-likes-by-creatorId/:creatorId', getLikesByCreatorId);
+router.get('/is-post-liked/:postId', authCheck, checkIfUserLikedPost);
+router.get('/get-likes-by-creatorId/:creatorId', getLikesByCreatorId);
 
 module.exports = router;

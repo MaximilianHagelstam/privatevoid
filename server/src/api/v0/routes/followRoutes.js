@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post('/follow-user', authCheck, followUser);
 router.post('/unfollow-user', authCheck, unfollowUser);
-router.get('/read-follow-by-userId/:userId', authCheck, checkIfUserFollowsUser);
+router.get('/is-user-followed/:userId', authCheck, checkIfUserFollowsUser);
 router.get('/following-posts', authCheck, getPostsByFollowing);
 
 module.exports = router;

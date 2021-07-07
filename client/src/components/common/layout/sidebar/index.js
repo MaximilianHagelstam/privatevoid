@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { FiMail, FiUser, FiSettings, FiLogOut, FiHome } from 'react-icons/fi';
 import './Sidebar.css';
 
-import { fetchUser } from '../../../../util/api';
+import { fetchCurrentUser } from '../../../../util/api';
 import { NavButton } from './NavButton';
 import { ToggleTheme } from './ToggleTheme';
 import { ComposeButton } from './ComposeButton';
@@ -15,7 +15,7 @@ export const Sidebar = () => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetchUser()
+    fetchCurrentUser()
       .then((res) => {
         if (res.status === 200) {
           return res.json();

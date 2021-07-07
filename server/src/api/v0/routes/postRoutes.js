@@ -10,8 +10,8 @@ const authCheck = require('../middleware/authCheck');
 const router = express.Router();
 
 router.post('/create-post', authCheck, createPost);
-router.get('/read-posts', getPosts);
-router.get('/read-post-by-id/:postId', getPostById);
-router.get('/read-posts-by-authorId/:authorId', getPostsByAuthorId);
+router.get('/get-posts', getPosts);
+router.get('/get-post-by-id/:postId', getPostById);
+router.get('/get-posts-by-authorId/:authorId', getPostsByAuthorId);
 
 module.exports = router;

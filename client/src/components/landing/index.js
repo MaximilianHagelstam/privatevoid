@@ -10,14 +10,14 @@ import {
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import { fetchUser } from '../../util/api';
+import { fetchCurrentUser } from '../../util/api';
 import { Illustration } from './Illustration';
 
 export const Landing = () => {
   let history = useHistory();
 
   useEffect(() => {
-    fetchUser().then((res) => {
+    fetchCurrentUser().then((res) => {
       if (res.status === 200) {
         history.push('/home');
       }
