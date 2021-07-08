@@ -2,6 +2,7 @@ import React from 'react';
 import { Heading, Avatar, Box, Text, Stack, Center } from '@chakra-ui/react';
 
 import { FollowButton } from './FollowButton';
+import { FollowStats } from './FollowStats';
 
 export const ProfileCard = ({ avatar, displayName, username, bio }) => {
   return (
@@ -23,20 +24,7 @@ export const ProfileCard = ({ avatar, displayName, username, bio }) => {
             <Text color={'gray.500'}>{bio}</Text>
           </Stack>
 
-          <Stack direction={'row'} justify={'center'} spacing={6}>
-            <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>23k</Text>
-              <Text fontSize={'sm'} color={'gray.500'}>
-                Followers
-              </Text>
-            </Stack>
-            <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>23k</Text>
-              <Text fontSize={'sm'} color={'gray.500'}>
-                Followers
-              </Text>
-            </Stack>
-          </Stack>
+          <FollowStats />
 
           <FollowButton username={username} />
         </Box>
