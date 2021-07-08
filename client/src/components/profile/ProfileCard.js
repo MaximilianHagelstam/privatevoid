@@ -1,27 +1,46 @@
 import React from 'react';
-import { Heading, Avatar, Box, Text } from '@chakra-ui/react';
+import { Heading, Avatar, Box, Text, Stack, Center } from '@chakra-ui/react';
 
 import { FollowButton } from './FollowButton';
 
 export const ProfileCard = ({ avatar, displayName, username, bio }) => {
   return (
-    <Box w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
-      <Avatar
-        size={'2xl'}
-        src={avatar}
-        alt={'Profile'}
-        mb={4}
-        pos={'relative'}
-      />
-      <Heading fontSize={'2xl'}>{displayName}</Heading>
-      <Text fontWeight={600} color={'gray.500'} mb={4}>
-        @{username}
-      </Text>
-      <Text textAlign={'center'} px={14}>
-        {bio}
-      </Text>
+    <Center>
+      <Box w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
+        <Avatar
+          size={'2xl'}
+          src={avatar}
+          alt={'Profile'}
+          mb={4}
+          pos={'relative'}
+        />
 
-      <FollowButton username={username} />
-    </Box>
+        <Box>
+          <Stack spacing={0} align={'center'} mb={5}>
+            <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
+              {displayName}
+            </Heading>
+            <Text color={'gray.500'}>{bio}</Text>
+          </Stack>
+
+          <Stack direction={'row'} justify={'center'} spacing={6}>
+            <Stack spacing={0} align={'center'}>
+              <Text fontWeight={600}>23k</Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+                Followers
+              </Text>
+            </Stack>
+            <Stack spacing={0} align={'center'}>
+              <Text fontWeight={600}>23k</Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+                Followers
+              </Text>
+            </Stack>
+          </Stack>
+
+          <FollowButton username={username} />
+        </Box>
+      </Box>
+    </Center>
   );
 };
