@@ -12,14 +12,21 @@ import {
 export const FollowButton = ({ username }) => {
   const [isFollowed, setIdFollowed] = useState();
   const [userId, setUserId] = useState('');
+  const [buttonText, setButtonText] = useState('');
 
   useEffect(() => {
     convertUsernameToId(username).then((res) => setUserId(res.authorId));
 
     checkFollowed(userId).then((res) => {
       setIdFollowed(res.followed);
+
+      if (isFollowed === true) {
+        setButtonText('Unfollow');
+      } else {
+        setButtonText('Follow');
+      }
     });
-  }, [userId, username]);
+  }, [isFollowed, userId, username]);
 
   return (
     <Button
@@ -39,7 +46,7 @@ export const FollowButton = ({ username }) => {
         }
       }}
     >
-      Follow
+      {buttonText}
     </Button>
   );
 };
