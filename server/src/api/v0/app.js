@@ -3,9 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const session = require('cookie-session');
 const passport = require('passport');
-const morgan = require('morgan');
-const swaggerUI = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
 
 const db = require('../../config/db');
 const User = require('./models/User');
@@ -26,7 +23,6 @@ const DAY = 24 * 60 * 60 * 1000;
 const { CLIENT_HOME } = process.env;
 
 // Configure express
-app.use(morgan('dev'));
 app.use(
   cors({
     origin: CLIENT_HOME,
@@ -52,43 +48,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Swagger setup
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'PrivateVoid API',
-      version: '0.0.1',
-      description: 'API that handles the backend for PrivateVoid',
-      contact: {
-        name: 'Maximilian Hagelstam',
-        email: 'maximilian.hagelstam@gmail.com',
-      },
-      license: {
-        name: 'MIT',
-        url: 'https://opensource.org/licenses/MIT',
-      },
-    },
-    servers: [
-      {
-        url: 'http://localhost:8080/api/v0',
-        description: 'Local server',
-      },
-    ],
-  },
-  apis: ['./src/api/v0/routes/*.js'],
-};
-
-const specs = swaggerJsDoc(options);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
-
 // Test db connection
 db.authenticate()
   .then(() => {
     logger.info('Connected to DB');
   })
   .catch((err) => {
-    logger.error(`Error connecting to DB: ${err}`);
+    logger.error(err);
   });
 
 // User-Post relationship
@@ -114,20 +80,6 @@ User.hasMany(Follow, { foreignKey: 'user_id1' });
 Follow.belongsTo(User, { foreignKey: 'user_id1' });
 
 // Routes
-/**
- * @swagger
- * /:
- *   get:
- *     description: Get all books
- *     responses:
- *       200:
- *         description: Success
- *
- */
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
-
 app.use('/api/v0', apiRoutes);
 
 module.exports = app;
