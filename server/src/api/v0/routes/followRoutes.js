@@ -4,6 +4,7 @@ const {
   unfollowUser,
   checkIfUserFollowsUser,
   getPostsByFollowing,
+  getFollowersByUserId,
 } = require('../controllers/followController');
 const authCheck = require('../middleware/authCheck');
 
@@ -13,5 +14,6 @@ router.post('/follow-user', authCheck, followUser);
 router.post('/unfollow-user', authCheck, unfollowUser);
 router.get('/is-user-followed/:userId', authCheck, checkIfUserFollowsUser);
 router.get('/following-posts', authCheck, getPostsByFollowing);
+router.get('/get-followers-by-userId/:userId', getFollowersByUserId);
 
 module.exports = router;

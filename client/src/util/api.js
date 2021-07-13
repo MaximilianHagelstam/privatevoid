@@ -134,7 +134,7 @@ export const fetchLikesByCreatorId = (creatorId) =>
   );
 
 /**
- * Follow
+ * FOLLOW
  */
 export const followUser = (data) =>
   fetch(`${REACT_APP_API_HOME}/follow/follow-user`, {
@@ -181,3 +181,8 @@ export const fetchFollowedPosts = () =>
       'Access-Control-Allow-Credentials': true,
     },
   }).then((res) => res.json());
+
+export const fetchFollowersByUserId = (userId) =>
+  fetch(`${REACT_APP_API_HOME}/follow/get-followers-by-userId/${userId}`).then(
+    (res) => res.json()
+  );

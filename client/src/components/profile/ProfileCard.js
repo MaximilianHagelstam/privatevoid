@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heading, Avatar, Box, Text, Stack, Center } from '@chakra-ui/react';
 
 import { FollowButton } from './FollowButton';
 import { FollowStats } from './FollowStats';
+import { convertUsernameToId, fetchFollowersByUserId } from '../../util/api';
 
 export const ProfileCard = ({ avatar, displayName, username, bio }) => {
+  const [following, setFollowing] = useState([]);
+  const [followers, setFollowers] = useState([]);
+
+  useEffect(() => {
+    const fetchFollowStats = async () => {
+      const { authorId } = await convertUsernameToId(username);
+      const fetchedFollows = await fetchFollowersByUserId(authorId);
+
+      setFollowers(fetchedFollows);
+    };
+    fetchFollowStats();
+  }, [username]);
+
   return (
     <Center>
       <Box w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
@@ -24,7 +38,7 @@ export const ProfileCard = ({ avatar, displayName, username, bio }) => {
             <Text color={'gray.500'}>{bio}</Text>
           </Stack>
 
-          <FollowStats />
+          <FollowStats followers={followers.length} following="45" />
 
           <FollowButton username={username} />
         </Box>
