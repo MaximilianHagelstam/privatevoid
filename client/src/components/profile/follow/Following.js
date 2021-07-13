@@ -18,7 +18,7 @@ export const Following = ({ following }) => {
   return (
     <div>
       <Stack spacing={0} align={'center'} onClick={onOpen}>
-        <Text fontWeight={600}>{following}</Text>
+        <Text fontWeight={600}>{following.length}</Text>
         <Text fontSize={'sm'} color={'gray.500'}>
           Following
         </Text>

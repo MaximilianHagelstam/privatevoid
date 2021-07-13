@@ -44,10 +44,7 @@ export const ProfileCard = ({ avatar, displayName, username, bio }) => {
             <Text color={'gray.500'}>{bio}</Text>
           </Stack>
 
-          <FollowStats
-            followers={followers.length}
-            following={following.length}
-          />
+          <FollowStats followers={followers} following={following} />
 
           <FollowButton username={username} />
         </Box>
