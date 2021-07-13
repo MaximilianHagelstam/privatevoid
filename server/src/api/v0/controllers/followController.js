@@ -76,8 +76,26 @@ const getPostsByFollowing = async (req, res) => {
 
 const getFollowersByUserId = async (req, res) => {
   try {
-    const following = await Follow.findAll({
+    const followers = await Follow.findAll({
       where: { user_id2: req.params.userId },
+      include: [
+        {
+          model: User,
+          required: true,
+        },
+      ],
+    });
+
+    res.json(followers);
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
+const getFollowingByUserId = async (req, res) => {
+  try {
+    const following = await Follow.findAll({
+      where: { user_id1: req.params.userId },
       include: [
         {
           model: User,
@@ -98,4 +116,5 @@ module.exports = {
   checkIfUserFollowsUser,
   getPostsByFollowing,
   getFollowersByUserId,
+  getFollowingByUserId,
 };

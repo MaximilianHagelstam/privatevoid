@@ -186,3 +186,8 @@ export const fetchFollowersByUserId = (userId) =>
   fetch(`${REACT_APP_API_HOME}/follow/get-followers-by-userId/${userId}`).then(
     (res) => res.json()
   );
+
+export const fetchFollowingByUserId = (userId) =>
+  fetch(`${REACT_APP_API_HOME}/follow/get-following-by-userId/${userId}`).then(
+    (res) => res.json()
+  );
