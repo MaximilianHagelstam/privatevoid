@@ -12,6 +12,8 @@ import {
   ModalFooter,
 } from '@chakra-ui/react';
 
+import { UserList } from './UserList';
+
 export const Following = ({ following }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -30,7 +32,16 @@ export const Following = ({ following }) => {
           <ModalHeader>Following</ModalHeader>
           <ModalCloseButton rounded={'full'} />
           <ModalBody>
-            <h1>Hello</h1>
+            {following.map((follows) => {
+              return (
+                <UserList
+                  key={follows.user.id}
+                  avatar={follows.user.image_url}
+                  displayName={follows.user.display_name}
+                  username={follows.user.username}
+                />
+              );
+            })}
           </ModalBody>
           <ModalFooter></ModalFooter>
         </ModalContent>
