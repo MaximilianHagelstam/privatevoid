@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heading, Avatar, Box, Text, Stack, Center } from '@chakra-ui/react';
 
 import { FollowButton } from './FollowButton';
-import { FollowStats } from './FollowStats';
+import { FollowStats } from './follow/FollowStats';
 import {
   convertUsernameToId,
   fetchFollowersByUserId,
