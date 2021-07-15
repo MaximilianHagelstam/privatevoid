@@ -5,7 +5,13 @@ import { Link } from 'react-router-dom';
 export const UserList = ({ avatar, displayName, username }) => {
   return (
     <Link to={`/user/${username}`}>
-      <div style={{ alignItems: 'center', display: 'flex' }}>
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          borderBottomWidth: '1px',
+        }}
+      >
         <Avatar size="md" src={avatar} />
         <Flex flexDir="column" padding="10px">
           <Heading as="h3" size="sm">
