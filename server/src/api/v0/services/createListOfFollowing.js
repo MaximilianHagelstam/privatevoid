@@ -7,6 +7,8 @@ const createListOfFollowing = async (userId) => {
   );
 
   const followingArray = results.map((data) => data.user_id2);
+  followingArray.push(userId);
+
   logger.info(`User ${userId} follows users [${followingArray}]`);
 
   return followingArray;
