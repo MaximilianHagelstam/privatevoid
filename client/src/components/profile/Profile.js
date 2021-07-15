@@ -13,6 +13,7 @@ export const Profile = ({ searchedUsername }) => {
   const [displayName, setDisplayName] = useState('');
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
+  const [isOwner, setIsOwner] = useState();
 
   useEffect(() => {
     fetchUserByUsername(searchedUsername).then((res) => {
@@ -23,6 +24,7 @@ export const Profile = ({ searchedUsername }) => {
         setDisplayName(res.display_name);
         setUsername(res.username);
         setBio(res.bio);
+        setIsOwner(res.owner);
       } else {
         setUserFound(false);
       }
@@ -40,6 +42,7 @@ export const Profile = ({ searchedUsername }) => {
             avatar={avatar}
             displayName={displayName}
             bio={bio}
+            isOwner={isOwner}
           />
           <ProfileTabs username={username} />
         </div>

@@ -9,7 +9,13 @@ import {
   fetchFollowingByUserId,
 } from '../../util/api';
 
-export const ProfileCard = ({ avatar, displayName, username, bio }) => {
+export const ProfileCard = ({
+  avatar,
+  displayName,
+  username,
+  bio,
+  isOwner,
+}) => {
   const [following, setFollowing] = useState([]);
   const [followers, setFollowers] = useState([]);
 
@@ -46,7 +52,7 @@ export const ProfileCard = ({ avatar, displayName, username, bio }) => {
 
           <FollowStats followers={followers} following={following} />
 
-          <FollowButton username={username} />
+          {!isOwner ? <FollowButton username={username} /> : <div></div>}
         </Box>
       </Box>
     </Center>
