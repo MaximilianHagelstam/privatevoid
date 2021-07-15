@@ -20,8 +20,29 @@ const getUserByUsername = async (req, res) => {
       logger.info('User not found');
       res.status(404).json({ message: 'User not found' });
     } else {
+      let owner;
+
+      if (user.id === req.user.id) {
+        owner = true;
+      } else {
+        owner = false;
+      }
+
+      const response = {
+        id: user.id,
+        username: user.username,
+        display_name: user.display_name,
+        image_url: user.image_url,
+        bio: user.bio,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        owner,
+      };
+
+      console.log(response);
+
       logger.info('User found');
-      res.json(user);
+      res.json(response);
     }
   } catch (err) {
     logger.error(err);

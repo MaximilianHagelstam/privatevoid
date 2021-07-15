@@ -64,7 +64,16 @@ export const fetchCurrentUser = () =>
 
 export const fetchUserByUsername = (searchedUsername) =>
   fetch(
-    `${REACT_APP_API_HOME}/profile/get-user-by-username/${searchedUsername}`
+    `${REACT_APP_API_HOME}/profile/get-user-by-username/${searchedUsername}`,
+    {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true,
+      },
+    }
   ).then((res) => {
     if (res.status === 200) {
       return res.json();
