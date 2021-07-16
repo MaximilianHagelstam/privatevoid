@@ -49,7 +49,7 @@ export const fetchCommentsByCreatorId = (creatorId) =>
   ).then((res) => res.json());
 
 /**
- * Profile
+ * PROFILE
  */
 export const fetchCurrentUser = () =>
   fetch(`${REACT_APP_API_HOME}/profile/get-current-user`, {
@@ -139,6 +139,11 @@ export const checkLiked = (postId) =>
 
 export const fetchLikesByCreatorId = (creatorId) =>
   fetch(`${REACT_APP_API_HOME}/likes/get-likes-by-creatorId/${creatorId}`).then(
+    (res) => res.json()
+  );
+
+export const fetchLikesByPostId = (postId) =>
+  fetch(`${REACT_APP_API_HOME}/likes/get-likes-by-postId/${postId}`).then(
     (res) => res.json()
   );
 

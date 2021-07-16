@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import {
-  IconButton,
-  Modal,
   Button,
+  Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -34,14 +33,17 @@ export const CommentButton = ({ postId }) => {
 
   return (
     <div>
-      <IconButton
+      <Button
         variant="ghost"
         rounded={'full'}
         colorScheme="blue"
         aria-label="Comment"
         onClick={onOpen}
-        icon={<FiMessageCircle />}
-      />
+        fontWeight="normal"
+        leftIcon={<FiMessageCircle />}
+      >
+        5
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
