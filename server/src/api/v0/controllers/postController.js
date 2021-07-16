@@ -107,19 +107,21 @@ const checkOwner = async (req, res) => {
 
 const removePostById = async (req) => {
   try {
+    const { postId } = req.body;
+
     await Comment.destroy({
-      where: { post_id: req.body.postId },
+      where: { post_id: postId },
     });
 
     await Like.destroy({
-      where: { post_id: req.body.postId },
+      where: { post_id: postId },
     });
 
     await Post.destroy({
-      where: { id: req.body.postId },
+      where: { id: postId },
     });
 
-    logger.info(`Post  removed`);
+    logger.info(`Post with id ${postId} removed`);
   } catch (err) {
     logger.error(err);
   }
