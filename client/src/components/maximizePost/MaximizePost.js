@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { fetchPostById } from '../../util/api';
 import { Post } from '../common/post';
+import { Comment } from '../common/comment';
 
 export const MaximizePost = ({ postId }) => {
   const [postMessage, setPostMessage] = useState('');
@@ -35,14 +36,13 @@ export const MaximizePost = ({ postId }) => {
       />
 
       {comments.map((comment) => (
-        <Post
+        <Comment
           key={comments.id}
           message={comment.body}
           username={comment.user.username}
           displayName={comment.user.display_name}
           date={comment.createdAt}
           avatar={comment.user.image_url}
-          type="comment"
         />
       ))}
     </div>

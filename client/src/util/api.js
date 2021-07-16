@@ -28,6 +28,17 @@ export const fetchPostsByAuthorId = (authorId) =>
     (res) => res.json()
   );
 
+export const checkOwner = (postId) =>
+  fetch(`${REACT_APP_API_HOME}/posts/is-user-post-owner/${postId}`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+  }).then((res) => res.json());
+
 /**
  * COMMENTS
  */

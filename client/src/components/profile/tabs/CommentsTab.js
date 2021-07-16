@@ -5,6 +5,7 @@ import {
   convertUsernameToId,
 } from '../../../util/api';
 import { Post } from '../../common/post';
+import { Comment } from '../../common/comment';
 
 export const CommentsTab = ({ authorUsername }) => {
   const [comments, setComments] = useState([]);
@@ -35,7 +36,7 @@ export const CommentsTab = ({ authorUsername }) => {
             size="big"
           />
 
-          <Post
+          <Comment
             key={comment.id}
             postId={comment.id}
             message={comment.body}
@@ -43,7 +44,6 @@ export const CommentsTab = ({ authorUsername }) => {
             date={comment.createdAt}
             displayName={comment.user.display_name}
             avatar={comment.user.image_url}
-            type="comment"
           />
         </div>
       ))}
