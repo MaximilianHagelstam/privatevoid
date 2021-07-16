@@ -105,23 +105,29 @@ const checkOwner = async (req, res) => {
   }
 };
 
-const removePostById = async (req) => {
+const removePostById = async (req, res) => {
   try {
     const { postId } = req.body;
 
-    await Comment.destroy({
-      where: { post_id: postId },
-    });
+    const post = await Post.findByPk(postId);
 
-    await Like.destroy({
-      where: { post_id: postId },
-    });
+    if (req.user.id === post.author_id) {
+      await Comment.destroy({
+        where: { post_id: postId },
+      });
 
-    await Post.destroy({
-      where: { id: postId },
-    });
+      await Like.destroy({
+        where: { post_id: postId },
+      });
 
-    logger.info(`Post with id ${postId} removed`);
+      await Post.destroy({
+        where: { id: postId },
+      });
+
+      logger.info(`Post with id ${postId} removed`);
+    } else {
+      res.json({ error: 'You can not delete another users post' });
+    }
   } catch (err) {
     logger.error(err);
   }

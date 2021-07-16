@@ -4,7 +4,7 @@ import { Heading, Box } from '@chakra-ui/react';
 export const NoFollows = () => {
   return (
     <Box maxW={'xl'} w={'full'} p={6} textAlign={'center'} overflow={'hidden'}>
-      <Heading fontSize={'2xl'}>You have yet to follow anyone</Heading>
+      <Heading fontSize={'2xl'}>No posts</Heading>
     </Box>
   );
 };

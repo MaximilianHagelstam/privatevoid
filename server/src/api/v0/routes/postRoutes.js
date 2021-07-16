@@ -16,6 +16,6 @@ router.post('/create-post', authCheck, createPost);
 router.get('/get-post-by-id/:postId', getPostById);
 router.get('/get-posts-by-authorId/:authorId', getPostsByAuthorId);
 router.get('/is-user-post-owner/:postId', authCheck, checkOwner);
-router.post('/remove-post', removePostById);
+router.post('/remove-post', authCheck, removePostById);
 
 module.exports = router;
