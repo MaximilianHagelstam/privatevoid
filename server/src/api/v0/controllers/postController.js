@@ -84,9 +84,30 @@ const getPostsByAuthorId = async (req, res) => {
   }
 };
 
+const checkOwner = async (req, res) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.postId },
+    });
+
+    let owner;
+
+    if (post.author_id === req.user.id) {
+      owner = true;
+    } else {
+      owner = false;
+    }
+
+    res.json({ owner });
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
 module.exports = {
   createPost,
   getPosts,
   getPostById,
   getPostsByAuthorId,
+  checkOwner,
 };
