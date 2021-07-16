@@ -1,5 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Stack, Avatar, Text, Box, Heading, HStack } from '@chakra-ui/react';
+import {
+  Stack,
+  Avatar,
+  Text,
+  Box,
+  Heading,
+  HStack,
+  Menu,
+  MenuButton,
+  IconButton,
+  MenuItem,
+  MenuList,
+} from '@chakra-ui/react';
+import { BsThreeDots } from 'react-icons/bs';
+import { FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import './Post.css';
 
@@ -35,7 +49,7 @@ export const Post = ({
               size={size === 'big' ? 'lg' : 'md'}
             />
           </Link>
-          {isOwner ? <p>My post</p> : <div></div>}
+
           <Stack direction={'column'} spacing={0}>
             <Link to={`/post/${postId}`}>
               <Heading as="h3" size={size === 'big' ? 'md' : 'sm'}>
@@ -49,6 +63,23 @@ export const Post = ({
             <HStack spacing="24px" paddingTop="4px">
               <CommentButton postId={postId} />
               <LikeButton postId={postId} />
+              {isOwner ? (
+                <Menu>
+                  <MenuButton
+                    as={IconButton}
+                    aria-label="Options"
+                    icon={<BsThreeDots />}
+                    rounded={'full'}
+                    size="sm"
+                    variant="ghost"
+                  />
+                  <MenuList>
+                    <MenuItem icon={<FiTrash />}>Delete</MenuItem>
+                  </MenuList>
+                </Menu>
+              ) : (
+                <div></div>
+              )}
             </HStack>
           </Stack>
         </Stack>
