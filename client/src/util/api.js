@@ -48,6 +48,11 @@ export const fetchCommentsByCreatorId = (creatorId) =>
     `${REACT_APP_API_HOME}/comments/get-comments-by-creatorId/${creatorId}`
   ).then((res) => res.json());
 
+export const fetchCommentsByPostId = (postId) =>
+  fetch(`${REACT_APP_API_HOME}/comments/get-comments-by-postId/${postId}`).then(
+    (res) => res.json()
+  );
+
 /**
  * PROFILE
  */

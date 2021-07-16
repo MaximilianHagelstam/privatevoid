@@ -46,7 +46,20 @@ const getCommentsByCreatorId = async (req, res) => {
   }
 };
 
+const getCommentsByPostId = async (req, res) => {
+  try {
+    const comments = await Comment.findAll({
+      where: { post_id: req.params.postId },
+    });
+
+    res.json(comments);
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
 module.exports = {
   createComment,
   getCommentsByCreatorId,
+  getCommentsByPostId,
 };

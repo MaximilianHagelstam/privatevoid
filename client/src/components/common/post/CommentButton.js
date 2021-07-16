@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   Modal,
@@ -14,12 +14,19 @@ import {
 } from '@chakra-ui/react';
 import { FiMessageCircle } from 'react-icons/fi';
 
-import { createComment } from '../../../util/api';
+import { createComment, fetchCommentsByPostId } from '../../../util/api';
 import { CommentPost } from './CommentPost';
 
 export const CommentButton = ({ postId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [comment, setComment] = useState('');
+  const [commentAmount, setCommentAmount] = useState('');
+
+  useEffect(() => {
+    fetchCommentsByPostId(postId).then((res) => {
+      setCommentAmount(res.length);
+    });
+  }, [postId]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +49,7 @@ export const CommentButton = ({ postId }) => {
         fontWeight="normal"
         leftIcon={<FiMessageCircle />}
       >
-        5
+        {commentAmount}
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
