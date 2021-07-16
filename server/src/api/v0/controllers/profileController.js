@@ -39,8 +39,6 @@ const getUserByUsername = async (req, res) => {
         owner,
       };
 
-      console.log(response);
-
       logger.info('User found');
       res.json(response);
     }
