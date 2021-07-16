@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiMail, FiUser, FiSettings, FiLogOut, FiHome } from 'react-icons/fi';
+import { FiUser, FiSettings, FiLogOut, FiHome } from 'react-icons/fi';
 import './Sidebar.css';
 
 import { fetchCurrentUser } from '../../../../util/api';
@@ -37,7 +37,6 @@ export const Sidebar = () => {
     <div className="sidebar">
       <ToggleTheme />
       <NavButton text="Home" link="/home" icon={<FiHome />} />
-      <NavButton text="Messages" link="/messages" icon={<FiMail />} />
       <NavButton
         text="Profile"
         link={`/user/${user.username}`}
