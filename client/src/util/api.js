@@ -39,6 +39,18 @@ export const checkOwner = (postId) =>
     },
   }).then((res) => res.json());
 
+export const removePost = (data) =>
+  fetch(`${REACT_APP_API_HOME}/posts/remove-post`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data),
+  });
+
 /**
  * COMMENTS
  */

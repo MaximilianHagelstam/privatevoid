@@ -2,6 +2,7 @@ const logger = require('../../../config/logger');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const Comment = require('../models/Comment');
+const Like = require('../models/Like');
 
 const createPost = async (req) => {
   try {
@@ -104,10 +105,31 @@ const checkOwner = async (req, res) => {
   }
 };
 
+const removePostById = async (req) => {
+  try {
+    await Comment.destroy({
+      where: { post_id: req.body.postId },
+    });
+
+    await Like.destroy({
+      where: { post_id: req.body.postId },
+    });
+
+    await Post.destroy({
+      where: { id: req.body.postId },
+    });
+
+    logger.info(`Post  removed`);
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
 module.exports = {
   createPost,
   getPosts,
   getPostById,
   getPostsByAuthorId,
   checkOwner,
+  removePostById,
 };

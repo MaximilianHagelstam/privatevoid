@@ -19,7 +19,7 @@ import './Post.css';
 
 import { CommentButton } from './CommentButton';
 import { LikeButton } from './LikeButton';
-import { checkOwner } from '../../../util/api';
+import { checkOwner, removePost } from '../../../util/api';
 
 export const Post = ({
   message,
@@ -74,7 +74,14 @@ export const Post = ({
                     variant="ghost"
                   />
                   <MenuList>
-                    <MenuItem icon={<FiTrash />}>Delete</MenuItem>
+                    <MenuItem
+                      icon={<FiTrash />}
+                      onClick={async () => {
+                        await removePost({ postId: postId });
+                      }}
+                    >
+                      Delete
+                    </MenuItem>
                   </MenuList>
                 </Menu>
               ) : (

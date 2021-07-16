@@ -5,6 +5,7 @@ const {
   getPostById,
   getPostsByAuthorId,
   checkOwner,
+  removePostById,
 } = require('../controllers/postController');
 const authCheck = require('../middleware/authCheck');
 
@@ -15,5 +16,6 @@ router.post('/create-post', authCheck, createPost);
 router.get('/get-post-by-id/:postId', getPostById);
 router.get('/get-posts-by-authorId/:authorId', getPostsByAuthorId);
 router.get('/is-user-post-owner/:postId', authCheck, checkOwner);
+router.post('/remove-post', removePostById);
 
 module.exports = router;
