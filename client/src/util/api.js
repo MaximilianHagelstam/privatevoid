@@ -175,6 +175,9 @@ export const fetchLikesByPostId = (postId) =>
     (res) => res.json()
   );
 
+export const fetchMostLiked = () =>
+  fetch(`${REACT_APP_API_HOME}/likes/get-most-liked`).then((res) => res.json());
+
 /**
  * FOLLOW
  */
@@ -232,4 +235,9 @@ export const fetchFollowersByUserId = (userId) =>
 export const fetchFollowingByUserId = (userId) =>
   fetch(`${REACT_APP_API_HOME}/follow/get-following-by-userId/${userId}`).then(
     (res) => res.json()
+  );
+
+export const fetchMostFollowed = () =>
+  fetch(`${REACT_APP_API_HOME}/follow/get-most-followed`).then((res) =>
+    res.json()
   );
