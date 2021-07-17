@@ -2,6 +2,7 @@ const logger = require('../../../config/logger');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const Like = require('../models/Like');
+const { sortMostLikedPosts } = require('../services/sortMostLikedPosts');
 
 const likePost = async (req) => {
   try {
@@ -85,10 +86,30 @@ const getLikesByPostId = async (req, res) => {
   }
 };
 
+const getMostLiked = async (req, res) => {
+  try {
+    const posts = await Post.findAll({
+      include: [
+        {
+          model: Like,
+          required: false,
+        },
+      ],
+    });
+
+    const mostLiked = sortMostLikedPosts(posts);
+
+    res.json(mostLiked);
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
 module.exports = {
   likePost,
   unLikePost,
   checkIfUserLikedPost,
   getLikesByCreatorId,
   getLikesByPostId,
+  getMostLiked,
 };
