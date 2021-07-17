@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Profile.css';
 
 import { fetchUserByUsername } from '../../util/api';
 import { ProfileCard } from './ProfileCard';
@@ -32,7 +31,7 @@ export const Profile = ({ searchedUsername }) => {
   }, [searchedUsername]);
 
   return (
-    <div className="user">
+    <div>
       {!userFound ? (
         <UserNotFound />
       ) : (
