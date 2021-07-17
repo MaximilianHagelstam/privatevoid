@@ -96,6 +96,10 @@ const getMostLiked = async (req, res) => {
           model: Like,
           required: false,
         },
+        {
+          model: User,
+          required: true,
+        },
       ],
     });
 
