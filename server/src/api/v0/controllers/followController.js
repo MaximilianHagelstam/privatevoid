@@ -113,6 +113,8 @@ const getFollowingByUserId = async (req, res) => {
 
 const getMostFollowed = async (req, res) => {
   try {
+    const userAmount = 5;
+
     const users = await User.findAll({
       include: [
         {
@@ -122,7 +124,7 @@ const getMostFollowed = async (req, res) => {
       ],
     });
 
-    const mostFollowed = sortMostFollowedUsers(users);
+    const mostFollowed = sortMostFollowedUsers(users, userAmount);
 
     res.json(mostFollowed);
   } catch (err) {

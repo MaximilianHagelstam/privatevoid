@@ -1,9 +1,11 @@
-const sortMostFollowedUsers = (ogArray) => {
-  const newArray = ogArray.sort((a, b) =>
+const sortMostFollowedUsers = (ogArray, limit) => {
+  const sortedArray = ogArray.sort((a, b) =>
     a.followers.length > b.followers.length ? -1 : 1
   );
 
-  return newArray;
+  const slicedArray = sortedArray.slice(0, limit);
+
+  return slicedArray;
 };
 
 module.exports = {

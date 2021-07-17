@@ -88,6 +88,8 @@ const getLikesByPostId = async (req, res) => {
 
 const getMostLiked = async (req, res) => {
   try {
+    const postAmount = 5;
+
     const posts = await Post.findAll({
       include: [
         {
@@ -97,7 +99,7 @@ const getMostLiked = async (req, res) => {
       ],
     });
 
-    const mostLiked = sortMostLikedPosts(posts);
+    const mostLiked = sortMostLikedPosts(posts, postAmount);
 
     res.json(mostLiked);
   } catch (err) {
