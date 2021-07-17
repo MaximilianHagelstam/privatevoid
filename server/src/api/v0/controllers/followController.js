@@ -4,6 +4,7 @@ const Follow = require('../models/Follow');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const { createListOfFollowing } = require('../services/createListOfFollowing');
+const { sortMostFollowedUsers } = require('../services/sortMostFollowedUsers');
 
 const followUser = async (req) => {
   try {
@@ -110,6 +111,25 @@ const getFollowingByUserId = async (req, res) => {
   }
 };
 
+const getMostFollowed = async (req, res) => {
+  try {
+    const users = await User.findAll({
+      include: [
+        {
+          model: Follow,
+          required: false,
+        },
+      ],
+    });
+
+    const mostFollowed = sortMostFollowedUsers(users);
+
+    res.json(mostFollowed);
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
 module.exports = {
   followUser,
   unfollowUser,
@@ -117,4 +137,5 @@ module.exports = {
   getPostsByFollowing,
   getFollowersByUserId,
   getFollowingByUserId,
+  getMostFollowed,
 };
